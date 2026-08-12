@@ -1,0 +1,46 @@
+{
+  "projects": [
+    {
+      "id": "frame-pacing",
+      "name": "FramePacing",
+      "description": "A display-aligned frame pacing clock for the JetBrains Runtime.",
+      "specs": [
+        {
+          "id": "display-aligned-frame-pacing",
+          "title": "Display-aligned frame pacing",
+          "date": "2026-08-05",
+          "url": "https://specs.sebastiano.dev/frame-pacing/",
+          "description": "The living plan for stopping Compose-for-Desktop UIs from rendering faster than the display can show."
+        }
+      ]
+    },
+    {
+      "id": "jewel-shortcuts",
+      "name": "Jewel shortcuts",
+      "description": "Compose shortcuts and IntelliJ keymap work in the IntelliJ Platform.",
+      "specs": [
+        {
+          "id": "jewel-shortcuts-review",
+          "title": "Actions and shortcuts review",
+          "date": "2026-07-24",
+          "url": "https://specs.sebastiano.dev/actions/",
+          "description": "The living design document, proof matrix, and roadmap."
+        }
+      ]
+    },
+    {
+      "id": "pioneer",
+      "name": "Pioneer",
+      "description": "A safe local bridge from coding agents to Pi for reviews and isolated evals.",
+      "specs": [
+        {
+          "id": "pioneer-profile-file-design",
+          "title": "Profile-file design",
+          "date": "2026-08-11",
+          "url": "https://specs.sebastiano.dev/pioneer-profile-file-design/",
+          "description": "A default-deny design for explicitly selected Pi extensions and brokered MCP servers."
+        }
+      ]
+    }
+  ]
+}

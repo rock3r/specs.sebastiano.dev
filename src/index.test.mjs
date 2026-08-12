@@ -1,0 +1,50 @@
+import assert from "node:assert/strict";
+import test from "node:test";
+
+import {
+  createUpstreamRequest,
+  matchDeployment,
+  rewriteLocation,
+  rewriteUrlValue,
+} from "./index.mjs";
+
+const framePacing = matchDeployment("/frame-pacing/");
+const actions = matchDeployment("/actions/diff-walkthrough.html");
+const pioneer = matchDeployment("/pioneer-profile-file-design/");
+
+test("matches only deployment path boundaries", () => {
+  assert.equal(framePacing?.binding, "FRAME_PACING");
+  assert.equal(actions?.binding, "ACTIONS");
+  assert.equal(pioneer?.binding, "PIONEER_PROFILE_FILE_DESIGN");
+  assert.equal(matchDeployment("/action"), undefined);
+  assert.equal(matchDeployment("/actions-extra"), undefined);
+});
+
+test("maps the Pioneer public root to its Worker", () => {
+  const request = new Request("https://specs.sebastiano.dev/pioneer-profile-file-design/");
+  const upstream = createUpstreamRequest(request, pioneer);
+
+  assert.equal(upstream.url, "https://pioneer-profile-file-design.seeb.workers.dev/");
+});
+
+test("maps public paths to the service request", () => {
+  const request = new Request("https://specs.sebastiano.dev/actions/media/demo.mp4?v=2");
+  const upstream = createUpstreamRequest(request, actions);
+
+  assert.equal(upstream.url, "https://jewel-shortcuts-review.seeb.workers.dev/media/demo.mp4?v=2");
+});
+
+test("prefixes root-relative and upstream absolute links", () => {
+  assert.equal(rewriteUrlValue("/prd.html#api", framePacing), "/frame-pacing/prd.html#api");
+  assert.equal(
+    rewriteUrlValue("https://frame-pacing.seeb.workers.dev/prd.html", framePacing),
+    "/frame-pacing/prd.html",
+  );
+  assert.equal(rewriteUrlValue("styles.css", actions), "styles.css");
+  assert.equal(rewriteUrlValue("#decision", actions), "#decision");
+  assert.equal(rewriteUrlValue("https://github.com/", actions), "https://github.com/");
+});
+
+test("rewrites upstream redirects into the public namespace", () => {
+  assert.equal(rewriteLocation("/diff-walkthrough.html", actions), "/actions/diff-walkthrough.html");
+});

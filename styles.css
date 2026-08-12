@@ -1,0 +1,80 @@
+@font-face {
+  font-family: Jaapokki;
+  src: url("assets/Jaapokki-Regular.otf") format("opentype");
+  font-display: swap;
+}
+
+:root {
+  --yellow: #f4e04d;
+  --ink: rgba(0, 0, 0, 0.87);
+  --rust: #8b3018;
+  --orange: #f15025;
+  --rule: rgba(0, 0, 0, 0.18);
+  --soft-ink: rgba(0, 0, 0, 0.66);
+  --max-width: 58rem;
+}
+
+* { box-sizing: border-box; }
+html { min-width: 320px; scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--yellow);
+  color: var(--ink);
+  font-family: Rubik, system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--ink); text-decoration: none; transition: color 180ms ease-in-out; }
+a:hover { color: var(--rust); }
+a:focus-visible { outline: 3px solid var(--rust); outline-offset: 5px; }
+.skip-link { position: absolute; left: 1.5rem; top: .75rem; padding: .5rem .75rem; background: var(--ink); color: var(--yellow); transform: translateY(-180%); }
+.skip-link:focus { transform: translateY(0); }
+.page-shell { width: min(calc(100% - 3rem), var(--max-width)); margin: 0 auto; padding: 2.25rem 0 3.5rem; }
+.site-header, footer { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.site-header { min-height: 3.5rem; border-bottom: 1px solid var(--rule); }
+.identity { display: inline-flex; align-items: center; gap: .8rem; font-size: .95rem; font-weight: 500; }
+.monogram { color: var(--orange); font-family: Jaapokki, sans-serif; font-size: 2.1rem; line-height: 1; text-shadow: 2px 2px 0 #fff; }
+.home-link, .catalog-meta, .section-label, .spec-date, .spec-kind { font-size: .82rem; }
+.home-link, .section-label, .catalog-meta, .spec-date, .spec-kind { color: var(--soft-ink); }
+.home-link:hover { color: var(--rust); }
+.intro { max-width: 48rem; padding: 5.5rem 0 3.5rem; }
+.section-label { margin: 0 0 .75rem; color: var(--rust); font-weight: 500; }
+h1, h2, p { text-wrap: pretty; }
+h1 { max-width: 12ch; margin: 0; font-size: clamp(2.7rem, 7vw, 5rem); font-weight: 500; line-height: 1.05; }
+.intro-copy { max-width: 42rem; margin: 1.4rem 0 0; font-size: clamp(1.05rem, 2vw, 1.25rem); }
+.catalog-meta { margin: 1.8rem 0 0; }
+.project { margin: 2rem 0 0; padding-top: 1.35rem; border-top: 1px solid var(--rule); }
+.project-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 1.5rem; }
+.project h2 { margin: 0; font-size: clamp(1.35rem, 2.5vw, 1.75rem); font-weight: 500; }
+.project-description { max-width: 44rem; margin: .4rem 0 1rem; color: var(--soft-ink); }
+.spec-list { margin: 0; border-top: 1px solid var(--rule); }
+.spec-link { display: grid; grid-template-columns: 7rem minmax(0, 1fr) auto; gap: 1.2rem; align-items: baseline; padding: 1rem 0; border-bottom: 1px solid var(--rule); }
+.spec-link:hover .spec-title { color: var(--rust); }
+.spec-date { font-variant-numeric: tabular-nums; }
+.spec-title { font-size: 1.05rem; font-weight: 500; transition: color 180ms ease-in-out; }
+.spec-description { margin: .22rem 0 0; color: var(--soft-ink); font-size: .92rem; }
+.spec-kind { white-space: nowrap; }
+.loading, .notice, .error { padding: 1rem 0; border-top: 1px solid var(--rule); color: var(--soft-ink); }
+.error { color: var(--rust); }
+footer { margin-top: 5rem; padding-top: 1rem; border-top: 1px solid var(--rule); color: var(--soft-ink); font-size: .88rem; }
+footer a { color: var(--rust); }
+
+@media (max-width: 620px) {
+  .page-shell { width: min(calc(100% - 2rem), var(--max-width)); padding-top: 1.25rem; }
+  .site-header { align-items: flex-start; }
+  .identity-name { display: none; }
+  .intro { padding: 4.25rem 0 2.75rem; }
+  h1 { max-width: 11ch; font-size: clamp(2.5rem, 13vw, 4rem); }
+  .project-heading { display: block; }
+  .spec-link { grid-template-columns: 1fr auto; gap: .15rem 1rem; }
+  .spec-date { grid-column: 1; grid-row: 1; }
+  .spec-kind { grid-column: 2; grid-row: 1; justify-self: end; }
+  .spec-copy { grid-column: 1 / -1; grid-row: 2; margin-top: .25rem; }
+  footer { align-items: flex-start; flex-direction: column; gap: .25rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  a, .spec-title { transition: none; }
+}
