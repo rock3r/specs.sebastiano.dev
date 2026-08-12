@@ -11,13 +11,16 @@ import {
 const framePacing = matchDeployment("/frame-pacing/");
 const actions = matchDeployment("/actions/diff-walkthrough.html");
 const pioneer = matchDeployment("/pioneer-profile-file-design/");
+const punaro = matchDeployment("/punaro-indirect-internet-architecture/");
 
 test("matches only deployment path boundaries", () => {
   assert.equal(framePacing?.binding, "FRAME_PACING");
   assert.equal(actions?.binding, "ACTIONS");
   assert.equal(pioneer?.binding, "PIONEER_PROFILE_FILE_DESIGN");
+  assert.equal(punaro?.binding, "PUNARO_INDIRECT_INTERNET_ARCHITECTURE");
   assert.equal(matchDeployment("/action"), undefined);
   assert.equal(matchDeployment("/actions-extra"), undefined);
+  assert.equal(matchDeployment("/punaro-indirect-internet-architecture-extra"), undefined);
 });
 
 test("maps the Pioneer public root to its Worker", () => {
@@ -25,6 +28,13 @@ test("maps the Pioneer public root to its Worker", () => {
   const upstream = createUpstreamRequest(request, pioneer);
 
   assert.equal(upstream.url, "https://pioneer-profile-file-design.seeb.workers.dev/");
+});
+
+test("maps the Punaro public root to its Worker", () => {
+  const request = new Request("https://specs.sebastiano.dev/punaro-indirect-internet-architecture/");
+  const upstream = createUpstreamRequest(request, punaro);
+
+  assert.equal(upstream.url, "https://punaro-indirect-internet-architecture.seeb.workers.dev/");
 });
 
 test("maps public paths to the service request", () => {

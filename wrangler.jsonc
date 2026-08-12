@@ -29,6 +29,10 @@
     {
       "binding": "PIONEER_PROFILE_FILE_DESIGN",
       "service": "pioneer-profile-file-design"
+    },
+    {
+      "binding": "PUNARO_INDIRECT_INTERNET_ARCHITECTURE",
+      "service": "punaro-indirect-internet-architecture"
     }
   ]
 }

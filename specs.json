@@ -1,6 +1,34 @@
 {
   "projects": [
     {
+      "id": "punaro",
+      "name": "Punaro",
+      "description": "Security-sensitive messaging and memory infrastructure for trusted native and hosted AI clients.",
+      "specs": [
+        {
+          "id": "punaro-indirect-internet-architecture",
+          "title": "Indirect Internet architecture",
+          "date": "2026-08-12",
+          "url": "https://specs.sebastiano.dev/punaro-indirect-internet-architecture/",
+          "description": "A Cloudflare-first hybrid design with optional Tailscale access and application-authoritative security."
+        }
+      ]
+    },
+    {
+      "id": "pioneer",
+      "name": "Pioneer",
+      "description": "A safe local bridge from coding agents to Pi for reviews and isolated evals.",
+      "specs": [
+        {
+          "id": "pioneer-profile-file-design",
+          "title": "Profile-file design",
+          "date": "2026-08-11",
+          "url": "https://specs.sebastiano.dev/pioneer-profile-file-design/",
+          "description": "A default-deny design for explicitly selected Pi extensions and brokered MCP servers."
+        }
+      ]
+    },
+    {
       "id": "frame-pacing",
       "name": "FramePacing",
       "description": "A display-aligned frame pacing clock for the JetBrains Runtime.",
@@ -25,20 +53,6 @@
           "date": "2026-07-24",
           "url": "https://specs.sebastiano.dev/actions/",
           "description": "The living design document, proof matrix, and roadmap."
-        }
-      ]
-    },
-    {
-      "id": "pioneer",
-      "name": "Pioneer",
-      "description": "A safe local bridge from coding agents to Pi for reviews and isolated evals.",
-      "specs": [
-        {
-          "id": "pioneer-profile-file-design",
-          "title": "Profile-file design",
-          "date": "2026-08-11",
-          "url": "https://specs.sebastiano.dev/pioneer-profile-file-design/",
-          "description": "A default-deny design for explicitly selected Pi extensions and brokered MCP servers."
         }
       ]
     }

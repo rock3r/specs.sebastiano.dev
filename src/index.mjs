@@ -14,6 +14,11 @@ export const DEPLOYMENTS = [
     binding: "PIONEER_PROFILE_FILE_DESIGN",
     upstreamOrigin: "https://pioneer-profile-file-design.seeb.workers.dev",
   },
+  {
+    id: "punaro-indirect-internet-architecture",
+    binding: "PUNARO_INDIRECT_INTERNET_ARCHITECTURE",
+    upstreamOrigin: "https://punaro-indirect-internet-architecture.seeb.workers.dev",
+  },
 ];
 
 const URL_ATTRIBUTES = ["href", "src", "action", "poster"];
