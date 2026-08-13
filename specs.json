@@ -1,6 +1,20 @@
 {
   "projects": [
     {
+      "id": "frame-pacing",
+      "name": "FramePacing",
+      "description": "A display-aligned frame pacing clock for the JetBrains Runtime.",
+      "specs": [
+        {
+          "id": "display-aligned-frame-pacing",
+          "title": "Display-aligned frame pacing",
+          "date": "2026-08-13",
+          "url": "https://specs.sebastiano.dev/frame-pacing/",
+          "description": "The living plan for stopping Compose-for-Desktop UIs from rendering faster than the display can show."
+        }
+      ]
+    },
+    {
       "id": "punaro",
       "name": "Punaro",
       "description": "Security-sensitive messaging and memory infrastructure for trusted native and hosted AI clients.",
@@ -25,20 +39,6 @@
           "date": "2026-08-11",
           "url": "https://specs.sebastiano.dev/pioneer-profile-file-design/",
           "description": "A default-deny design for explicitly selected Pi extensions and brokered MCP servers."
-        }
-      ]
-    },
-    {
-      "id": "frame-pacing",
-      "name": "FramePacing",
-      "description": "A display-aligned frame pacing clock for the JetBrains Runtime.",
-      "specs": [
-        {
-          "id": "display-aligned-frame-pacing",
-          "title": "Display-aligned frame pacing",
-          "date": "2026-08-05",
-          "url": "https://specs.sebastiano.dev/frame-pacing/",
-          "description": "The living plan for stopping Compose-for-Desktop UIs from rendering faster than the display can show."
         }
       ]
     },
