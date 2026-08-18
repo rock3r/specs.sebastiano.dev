@@ -1,6 +1,20 @@
 {
   "projects": [
     {
+      "id": "compose-diagnostics",
+      "name": "Compose diagnostics",
+      "description": "Making Compose failures diagnosable in IntelliJ-based IDEs.",
+      "specs": [
+        {
+          "id": "compose-stack-traces-in-the-ide",
+          "title": "Compose stack traces in the IDE",
+          "date": "2026-08-18",
+          "url": "https://specs.sebastiano.dev/compose-stack-traces/",
+          "description": "A proposal to name the composable that crashed: cheap group-key traces by default, decoded at exception time, with a high-detail mode behind a flag."
+        }
+      ]
+    },
+    {
       "id": "frame-pacing",
       "name": "FramePacing",
       "description": "A display-aligned frame pacing clock for the JetBrains Runtime.",

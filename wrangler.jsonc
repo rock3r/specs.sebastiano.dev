@@ -33,6 +33,10 @@
     {
       "binding": "PUNARO_INDIRECT_INTERNET_ARCHITECTURE",
       "service": "punaro-indirect-internet-architecture"
+    },
+    {
+      "binding": "COMPOSE_STACK_TRACES",
+      "service": "compose-stack-traces"
     }
   ]
 }
