@@ -1,0 +1,392 @@
+:root {
+  --spec-paper: #f6f7f9;
+  --spec-ink: #22262d;
+  --spec-ink-soft: #5a6270;
+  --spec-line: #d8dce3;
+  --spec-accent: #4a63c8;
+  --spec-accent-soft: #e7ebf8;
+  --spec-ok: #2c7a4b;
+  --spec-ok-bg: #e4f0e8;
+  --spec-warn: #a8710f;
+  --spec-warn-bg: #f6edd9;
+  --spec-code-bg: #eceef2;
+  --spec-content-width: 1120px;
+  --spec-prose-width: 50rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --spec-paper: #191c21;
+    --spec-ink: #d9dde4;
+    --spec-ink-soft: #a9b0bc;
+    --spec-line: #343a44;
+    --spec-accent: #9badea;
+    --spec-accent-soft: #262d42;
+    --spec-ok: #76c596;
+    --spec-ok-bg: #1e2e25;
+    --spec-warn: #d8a64a;
+    --spec-warn-bg: #322a18;
+    --spec-code-bg: #23272f;
+  }
+}
+
+body.spec-house {
+  --paper: var(--spec-paper);
+  --bg: var(--spec-paper);
+  --panel: var(--spec-paper);
+  --white: var(--spec-paper);
+  --card: var(--spec-paper);
+  --ink: var(--spec-ink);
+  --muted: var(--spec-ink-soft);
+  --ink-soft: var(--spec-ink-soft);
+  --line: var(--spec-line);
+  --hairline: var(--spec-line);
+  --rule: var(--spec-line);
+  --accent: var(--spec-accent);
+  --accent-soft: var(--spec-accent-soft);
+  --tint: var(--spec-accent-soft);
+  --lavender: var(--spec-accent-soft);
+  --green-soft: var(--spec-accent-soft);
+  --blue-soft: var(--spec-accent-soft);
+  --gold-soft: var(--spec-accent-soft);
+  --code-bg: var(--spec-code-bg);
+  margin: 0 !important;
+  color: var(--spec-ink) !important;
+  background: var(--spec-paper) !important;
+  font: 16px/1.6 -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+  -webkit-font-smoothing: antialiased;
+}
+
+.spec-house *, .spec-house *::before, .spec-house *::after { box-sizing: border-box; }
+.spec-house ::selection { color: var(--spec-paper); background: var(--spec-accent); }
+.spec-house a { color: var(--spec-accent); text-decoration-thickness: 1px; text-underline-offset: 0.16em; }
+.spec-house :focus-visible { outline: 2px solid var(--spec-accent) !important; outline-offset: 3px !important; }
+.spec-house h1, .spec-house h2, .spec-house h3, .spec-house h4,
+.spec-house .decision, .spec-house .evidence-value {
+  color: var(--spec-ink);
+  font-family: Charter, "Bitstream Charter", "Sitka Text", Cambria, Georgia, serif !important;
+  text-wrap: balance;
+}
+.spec-house h1 { max-width: 17ch; letter-spacing: -0.035em !important; }
+.spec-house h2 { letter-spacing: -0.02em !important; }
+.spec-house p, .spec-house li, .spec-house dd { text-wrap: pretty; }
+.spec-house code, .spec-house pre {
+  font-family: ui-monospace, "Cascadia Code", "JetBrains Mono", Menlo, Consolas, monospace !important;
+}
+.spec-house code { color: inherit !important; background: var(--spec-code-bg) !important; }
+
+.spec-house-header {
+  position: relative;
+  z-index: 100;
+  width: 100%;
+  color: var(--spec-ink);
+  background: var(--spec-paper);
+  border-bottom: 1px solid var(--spec-line);
+}
+.spec-house-nav {
+  width: min(calc(100% - 48px), var(--spec-content-width));
+  min-height: 72px;
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px 28px;
+  font: 600 0.84rem/1.35 -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+.spec-house-brand, .spec-house-links { display: flex; align-items: center; }
+.spec-house-brand { gap: 10px; color: var(--spec-ink) !important; font-weight: 700; text-decoration: none; }
+.spec-house-mark {
+  width: 30px;
+  height: 30px;
+  display: inline-grid;
+  place-items: center;
+  color: var(--spec-paper);
+  background: var(--spec-ink);
+  border-radius: 5px;
+  font: 700 18px/1 Charter, "Bitstream Charter", "Sitka Text", Cambria, Georgia, serif;
+}
+.spec-house-links { justify-content: flex-end; gap: 10px 20px; }
+.spec-house-links a { color: var(--spec-ink-soft); text-decoration: none; }
+.spec-house-links a:hover { color: var(--spec-ink); }
+
+/* Long-form technical documents: FramePacing and Compose diagnostics. */
+.spec-house--frame-pacing .wrap,
+.spec-house--compose-stack-traces .wrap {
+  width: min(calc(100% - 48px), var(--spec-content-width)) !important;
+  max-width: none !important;
+  margin-inline: auto !important;
+  padding: clamp(56px, 8vw, 96px) 0 96px !important;
+}
+.spec-house--frame-pacing .sitenav {
+  margin: 0 0 56px !important;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--spec-line);
+  color: var(--spec-ink-soft);
+  font: 600 0.84rem/1.35 -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+}
+.spec-house--frame-pacing .wrap > header,
+.spec-house--compose-stack-traces .wrap > h1,
+.spec-house--compose-stack-traces .wrap > .subtitle,
+.spec-house--compose-stack-traces .wrap > .meta {
+  max-width: var(--spec-prose-width);
+}
+.spec-house--frame-pacing h1,
+.spec-house--compose-stack-traces h1 {
+  margin: 0 !important;
+  font-size: clamp(2.7rem, 6vw, 4.8rem) !important;
+  line-height: 1.05 !important;
+}
+.spec-house--frame-pacing .subtitle,
+.spec-house--compose-stack-traces .subtitle {
+  margin: 18px 0 24px !important;
+  color: var(--spec-ink-soft) !important;
+  font-size: 1.08rem !important;
+}
+.spec-house--frame-pacing .meta,
+.spec-house--compose-stack-traces .meta {
+  padding: 14px 0 !important;
+  color: var(--spec-ink-soft) !important;
+  border-color: var(--spec-line) !important;
+  font-size: 0.78rem !important;
+}
+.spec-house--frame-pacing section,
+.spec-house--compose-stack-traces section {
+  margin-top: clamp(64px, 8vw, 96px) !important;
+  padding-top: 28px !important;
+  border-top: 1px solid var(--spec-line);
+}
+.spec-house--frame-pacing section > h2,
+.spec-house--compose-stack-traces section > h2 {
+  max-width: var(--spec-prose-width);
+  margin: 0 0 14px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  font-size: clamp(1.75rem, 3.2vw, 2.6rem) !important;
+}
+.spec-house--frame-pacing section > p,
+.spec-house--frame-pacing section > ul,
+.spec-house--frame-pacing section > ol,
+.spec-house--frame-pacing section > h3,
+.spec-house--compose-stack-traces section > p,
+.spec-house--compose-stack-traces section > ul,
+.spec-house--compose-stack-traces section > ol,
+.spec-house--compose-stack-traces section > h3 {
+  max-width: var(--spec-prose-width);
+}
+.spec-house--frame-pacing .aside,
+.spec-house--compose-stack-traces .lead,
+.spec-house--compose-stack-traces .note {
+  max-width: var(--spec-prose-width);
+  padding: 16px 18px !important;
+  color: var(--spec-ink) !important;
+  background: var(--spec-accent-soft) !important;
+  border: 0 !important;
+  border-radius: 5px !important;
+}
+.spec-house--frame-pacing table,
+.spec-house--compose-stack-traces table { color: var(--spec-ink); background: transparent; }
+.spec-house--frame-pacing th, .spec-house--frame-pacing td,
+.spec-house--compose-stack-traces th, .spec-house--compose-stack-traces td { border-color: var(--spec-line) !important; }
+
+/* Zero-copy: preserve its evidence-rich sections while replacing the campaign styling. */
+.spec-house--zero-copy .hero {
+  min-height: 0 !important;
+  color: var(--spec-ink) !important;
+  background: var(--spec-paper) !important;
+}
+.spec-house--zero-copy .hero__inner,
+.spec-house--zero-copy .section {
+  width: min(calc(100% - 48px), var(--spec-content-width)) !important;
+  max-width: none !important;
+  margin-inline: auto !important;
+}
+.spec-house--zero-copy .hero__inner { padding: clamp(56px, 8vw, 112px) 0 !important; }
+.spec-house--zero-copy .hero h1 {
+  margin: 0 !important;
+  color: var(--spec-ink) !important;
+  font-size: clamp(2.7rem, 6.8vw, 5.5rem) !important;
+  line-height: 1.05 !important;
+}
+.spec-house--zero-copy .dateline,
+.spec-house--zero-copy .kicker,
+.spec-house--zero-copy .status,
+.spec-house--zero-copy .finding-label { color: var(--spec-accent) !important; }
+.spec-house--zero-copy .lede { max-width: 62ch; color: var(--spec-ink-soft) !important; }
+.spec-house--zero-copy .hero nav { border-color: var(--spec-line) !important; }
+.spec-house--zero-copy .hero nav a { color: var(--spec-ink-soft) !important; }
+.spec-house--zero-copy .section { padding-block: clamp(64px, 9vw, 112px) !important; }
+.spec-house--zero-copy .section--dark,
+.spec-house--zero-copy .section--tint { color: var(--spec-ink) !important; background: var(--spec-accent-soft) !important; }
+.spec-house--zero-copy .section-heading { max-width: var(--spec-prose-width); }
+.spec-house--zero-copy .section-heading h2,
+.spec-house--zero-copy .platform-detail__title h3,
+.spec-house--zero-copy .linux-plan h3,
+.spec-house--zero-copy .work-ledger h3,
+.spec-house--zero-copy .code-list span { color: var(--spec-ink) !important; font-family: Charter, "Bitstream Charter", "Sitka Text", Cambria, Georgia, serif !important; }
+.spec-house--zero-copy .section-heading p,
+.spec-house--zero-copy .section--dark p,
+.spec-house--zero-copy .section--dark strong,
+.spec-house--zero-copy .section--tint p { color: var(--spec-ink-soft) !important; }
+.spec-house--zero-copy .decision-grid,
+.spec-house--zero-copy .avoidance-flow,
+.spec-house--zero-copy .pacing-grid { border-color: var(--spec-line) !important; background: transparent !important; }
+.spec-house--zero-copy .decision,
+.spec-house--zero-copy .principle,
+.spec-house--zero-copy .avoidance-flow article,
+.spec-house--zero-copy .pacing-grid > div { color: var(--spec-ink) !important; background: transparent !important; border-color: var(--spec-line) !important; }
+.spec-house--zero-copy .diagram-frame,
+.spec-house--zero-copy .safety-rule { color: var(--spec-ink) !important; background: var(--spec-paper) !important; border-color: var(--spec-line) !important; }
+.spec-house--zero-copy .mermaid { color: var(--spec-ink) !important; }
+.spec-house--zero-copy table { color: var(--spec-ink); background: transparent !important; }
+.spec-house--zero-copy th, .spec-house--zero-copy td,
+.spec-house--zero-copy .platform-detail,
+.spec-house--zero-copy .linux-plan,
+.spec-house--zero-copy .linux-plan article,
+.spec-house--zero-copy .work-ledger,
+.spec-house--zero-copy .work-ledger article,
+.spec-house--zero-copy .requirements,
+.spec-house--zero-copy .requirements > div,
+.spec-house--zero-copy .code-list,
+.spec-house--zero-copy .code-list a { border-color: var(--spec-line) !important; }
+.spec-house--zero-copy footer { color: var(--spec-ink-soft) !important; background: var(--spec-paper) !important; border-top: 1px solid var(--spec-line); }
+
+/* Pioneer: its information architecture already matches the reference closely. */
+.spec-house--pioneer-profile-file-design .nav {
+  position: static !important;
+  width: min(calc(100% - 48px), var(--spec-content-width));
+  height: auto !important;
+  min-height: 0 !important;
+  margin-inline: auto;
+  padding: 18px 0 !important;
+  color: var(--spec-ink-soft);
+  background: transparent !important;
+  border-color: var(--spec-line) !important;
+  backdrop-filter: none !important;
+}
+.spec-house--pioneer-profile-file-design .nav .brand { display: none; }
+.spec-house--pioneer-profile-file-design .nav .links { color: var(--spec-ink-soft); }
+.spec-house--pioneer-profile-file-design main,
+.spec-house--pioneer-profile-file-design footer { width: min(calc(100% - 48px), var(--spec-content-width)) !important; }
+.spec-house--pioneer-profile-file-design .hero { min-height: 0 !important; padding-block: clamp(56px, 8vw, 112px) !important; }
+.spec-house--pioneer-profile-file-design h1 { font-size: clamp(2.7rem, 6.8vw, 5.5rem) !important; line-height: 1.05 !important; }
+.spec-house--pioneer-profile-file-design .lede,
+.spec-house--pioneer-profile-file-design .section-intro p,
+.spec-house--pioneer-profile-file-design .fact span,
+.spec-house--pioneer-profile-file-design .step p { color: var(--spec-ink-soft) !important; }
+.spec-house--pioneer-profile-file-design .summary,
+.spec-house--pioneer-profile-file-design .callout,
+.spec-house--pioneer-profile-file-design .review { color: var(--spec-ink) !important; background: var(--spec-accent-soft) !important; border-color: var(--spec-line) !important; border-radius: 8px !important; }
+.spec-house--pioneer-profile-file-design .summary p,
+.spec-house--pioneer-profile-file-design .review p { color: var(--spec-ink-soft) !important; }
+.spec-house--pioneer-profile-file-design .review h2 { color: var(--spec-ink) !important; }
+.spec-house--pioneer-profile-file-design .card,
+.spec-house--pioneer-profile-file-design .fact,
+.spec-house--pioneer-profile-file-design .step,
+.spec-house--pioneer-profile-file-design .matrix,
+.spec-house--pioneer-profile-file-design .matrix th { color: var(--spec-ink) !important; background: transparent !important; border-color: var(--spec-line) !important; box-shadow: none !important; }
+.spec-house--pioneer-profile-file-design pre { background: var(--spec-code-bg) !important; color: var(--spec-ink) !important; }
+.spec-house--pioneer-profile-file-design .button { border-radius: 5px !important; color: var(--spec-paper) !important; background: var(--spec-ink) !important; }
+.spec-house--pioneer-profile-file-design .button.alt { color: var(--spec-ink) !important; background: transparent !important; }
+
+/* Punaro: retain the architecture evidence, remove the separate microsite treatment. */
+.spec-house--punaro-indirect-internet-architecture .masthead {
+  width: min(calc(100% - 48px), var(--spec-content-width)) !important;
+  max-width: none !important;
+  margin-inline: auto !important;
+  padding: 18px 0 !important;
+  border-color: var(--spec-line) !important;
+}
+.spec-house--punaro-indirect-internet-architecture .masthead .wordmark { display: none; }
+.spec-house--punaro-indirect-internet-architecture main { overflow: visible !important; }
+.spec-house--punaro-indirect-internet-architecture .hero,
+.spec-house--punaro-indirect-internet-architecture .section,
+.spec-house--punaro-indirect-internet-architecture .section-nav,
+.spec-house--punaro-indirect-internet-architecture .closing,
+.spec-house--punaro-indirect-internet-architecture footer {
+  width: min(calc(100% - 48px), var(--spec-content-width)) !important;
+  max-width: none !important;
+  margin-inline: auto !important;
+}
+.spec-house--punaro-indirect-internet-architecture .hero { min-height: 0 !important; padding: clamp(56px, 8vw, 112px) 0 !important; }
+.spec-house--punaro-indirect-internet-architecture h1 { font-size: clamp(2.7rem, 6.8vw, 5.5rem) !important; line-height: 1.05 !important; }
+.spec-house--punaro-indirect-internet-architecture h1 em,
+.spec-house--punaro-indirect-internet-architecture .eyebrow,
+.spec-house--punaro-indirect-internet-architecture .phase { color: var(--spec-accent) !important; }
+.spec-house--punaro-indirect-internet-architecture .lede,
+.spec-house--punaro-indirect-internet-architecture .section-heading > p,
+.spec-house--punaro-indirect-internet-architecture .interaction p,
+.spec-house--punaro-indirect-internet-architecture .interaction li,
+.spec-house--punaro-indirect-internet-architecture .tradeoff-grid p,
+.spec-house--punaro-indirect-internet-architecture .timeline p { color: var(--spec-ink-soft) !important; }
+.spec-house--punaro-indirect-internet-architecture .button { border-radius: 5px !important; border-color: var(--spec-ink) !important; color: var(--spec-ink) !important; transform: none !important; }
+.spec-house--punaro-indirect-internet-architecture .button.primary { color: var(--spec-paper) !important; background: var(--spec-ink) !important; }
+.spec-house--punaro-indirect-internet-architecture .decision-card,
+.spec-house--punaro-indirect-internet-architecture .architecture,
+.spec-house--punaro-indirect-internet-architecture .interaction,
+.spec-house--punaro-indirect-internet-architecture .tradeoff-grid article,
+.spec-house--punaro-indirect-internet-architecture .closing {
+  color: var(--spec-ink) !important;
+  background: var(--spec-accent-soft) !important;
+  border-color: var(--spec-line) !important;
+  border-radius: 8px !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+.spec-house--punaro-indirect-internet-architecture .section { padding: clamp(64px, 9vw, 112px) 0 !important; }
+.spec-house--punaro-indirect-internet-architecture .section-heading { max-width: var(--spec-prose-width) !important; }
+.spec-house--punaro-indirect-internet-architecture .security-section { max-width: none !important; color: var(--spec-ink) !important; background: var(--spec-accent-soft) !important; }
+.spec-house--punaro-indirect-internet-architecture .security-section > * { width: min(calc(100% - 48px), var(--spec-content-width)); max-width: none !important; }
+.spec-house--punaro-indirect-internet-architecture .security-grid,
+.spec-house--punaro-indirect-internet-architecture .security-grid article { border-color: var(--spec-line) !important; }
+.spec-house--punaro-indirect-internet-architecture .security-grid p { color: var(--spec-ink-soft) !important; }
+.spec-house--punaro-indirect-internet-architecture .private-foundation b { color: var(--spec-ink) !important; background: var(--spec-code-bg) !important; }
+.spec-house--punaro-indirect-internet-architecture .punaro { color: var(--spec-paper) !important; background: var(--spec-ink) !important; }
+.spec-house--punaro-indirect-internet-architecture .punaro strong { color: var(--spec-paper) !important; }
+.spec-house--punaro-indirect-internet-architecture .closing p { color: var(--spec-ink-soft) !important; }
+.spec-house--punaro-indirect-internet-architecture .closing-note { border-radius: 5px !important; border-color: var(--spec-line) !important; }
+
+@media (max-width: 900px) {
+  .spec-house-nav { padding-block: 18px; align-items: flex-start; flex-direction: column; }
+  .spec-house--zero-copy .hero__inner,
+  .spec-house--pioneer-profile-file-design .hero,
+  .spec-house--punaro-indirect-internet-architecture .hero { grid-template-columns: 1fr !important; }
+}
+
+@media (max-width: 680px) {
+  .spec-house-nav,
+  .spec-house--frame-pacing .wrap,
+  .spec-house--compose-stack-traces .wrap,
+  .spec-house--zero-copy .hero__inner,
+  .spec-house--zero-copy .section,
+  .spec-house--pioneer-profile-file-design .nav,
+  .spec-house--pioneer-profile-file-design main,
+  .spec-house--pioneer-profile-file-design footer,
+  .spec-house--punaro-indirect-internet-architecture .masthead,
+  .spec-house--punaro-indirect-internet-architecture .hero,
+  .spec-house--punaro-indirect-internet-architecture .section,
+  .spec-house--punaro-indirect-internet-architecture .section-nav,
+  .spec-house--punaro-indirect-internet-architecture .closing,
+  .spec-house--punaro-indirect-internet-architecture footer { width: min(calc(100% - 32px), var(--spec-content-width)) !important; }
+  .spec-house-links { width: 100%; justify-content: flex-start; }
+  .spec-house--zero-copy .section--dark,
+  .spec-house--zero-copy .section--tint { width: 100% !important; padding-inline: 16px !important; }
+  .spec-house--pioneer-profile-file-design .nav .links { display: flex !important; gap: 14px !important; overflow-x: auto; }
+  .spec-house code { overflow-wrap: anywhere; word-break: break-word; }
+  .spec-house pre { max-width: 100% !important; overflow-x: auto !important; }
+  .spec-house pre code { overflow-wrap: normal; word-break: normal; }
+  .spec-house table {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: auto !important;
+  }
+  .spec-house--pioneer-profile-file-design .two,
+  .spec-house--pioneer-profile-file-design .decision,
+  .spec-house--pioneer-profile-file-design .two > *,
+  .spec-house--pioneer-profile-file-design .decision > *,
+  .spec-house--pioneer-profile-file-design .card { min-width: 0 !important; max-width: 100% !important; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spec-house *, .spec-house *::before, .spec-house *::after { transition-duration: 0.01ms !important; }
+}

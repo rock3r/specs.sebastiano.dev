@@ -1,31 +1,43 @@
 export const DEPLOYMENTS = [
   {
     id: "zero-copy",
+    title: "Zero-copy rendering",
+    mark: "Z",
     binding: "ZERO_COPY",
     upstreamOrigin: "https://zero-copy-prd.seeb.workers.dev",
   },
   {
     id: "frame-pacing",
+    title: "FramePacing",
+    mark: "F",
     binding: "FRAME_PACING",
     upstreamOrigin: "https://frame-pacing.seeb.workers.dev",
   },
   {
     id: "actions",
+    title: "Jewel shortcuts",
+    mark: "J",
     binding: "ACTIONS",
     upstreamOrigin: "https://jewel-shortcuts-review.seeb.workers.dev",
   },
   {
     id: "pioneer-profile-file-design",
+    title: "Pioneer profiles",
+    mark: "P",
     binding: "PIONEER_PROFILE_FILE_DESIGN",
     upstreamOrigin: "https://pioneer-profile-file-design.seeb.workers.dev",
   },
   {
     id: "punaro-indirect-internet-architecture",
+    title: "Punaro",
+    mark: "P",
     binding: "PUNARO_INDIRECT_INTERNET_ARCHITECTURE",
     upstreamOrigin: "https://punaro-indirect-internet-architecture.seeb.workers.dev",
   },
   {
     id: "compose-stack-traces",
+    title: "Compose diagnostics",
+    mark: "C",
     binding: "COMPOSE_STACK_TRACES",
     upstreamOrigin: "https://compose-stack-traces.seeb.workers.dev",
   },
@@ -75,6 +87,50 @@ class AttributeRewriter {
   }
 }
 
+export const houseStyleClassName = (deployment) =>
+  `spec-house spec-house--${deployment.id}`;
+
+export const usesEmbeddedHouseStyle = (deployment) =>
+  deployment.id === "actions" || deployment.id === "zero-copy";
+
+export const createHouseStyleHeader = (deployment) => `
+  <header class="spec-house-header">
+    <nav class="spec-house-nav" aria-label="Specs">
+      <a class="spec-house-brand" href="https://specs.sebastiano.dev/">
+        <span class="spec-house-mark" aria-hidden="true">${deployment.mark}</span>
+        <span>${deployment.title}</span>
+      </a>
+      <div class="spec-house-links">
+        <a href="https://specs.sebastiano.dev/">All specs</a>
+        <a href="https://specs.sebastiano.dev/actions/">House style</a>
+      </div>
+    </nav>
+  </header>`;
+
+class HouseStyleHeadRewriter {
+  element(element) {
+    element.append(
+      '<link rel="stylesheet" href="https://specs.sebastiano.dev/house-style.css">',
+      { html: true },
+    );
+  }
+}
+
+class HouseStyleBodyRewriter {
+  constructor(deployment) {
+    this.deployment = deployment;
+  }
+
+  element(element) {
+    const existingClass = element.getAttribute("class");
+    element.setAttribute(
+      "class",
+      [existingClass, houseStyleClassName(this.deployment)].filter(Boolean).join(" "),
+    );
+    element.prepend(createHouseStyleHeader(this.deployment), { html: true });
+  }
+}
+
 const proxy = async (request, env, deployment) => {
   const service = env[deployment.binding];
   if (!service) return new Response("Spec service binding is unavailable.", { status: 502 });
@@ -92,7 +148,14 @@ const proxy = async (request, env, deployment) => {
 
   if (!headers.get("content-type")?.includes("text/html")) return response;
 
-  return new HTMLRewriter().on("*", new AttributeRewriter(deployment)).transform(response);
+  const rewriter = new HTMLRewriter().on("*", new AttributeRewriter(deployment));
+
+  if (usesEmbeddedHouseStyle(deployment)) return rewriter.transform(response);
+
+  return rewriter
+    .on("head", new HouseStyleHeadRewriter())
+    .on("body", new HouseStyleBodyRewriter(deployment))
+    .transform(response);
 };
 
 export default {

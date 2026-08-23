@@ -2,10 +2,13 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import {
+  createHouseStyleHeader,
   createUpstreamRequest,
+  houseStyleClassName,
   matchDeployment,
   rewriteLocation,
   rewriteUrlValue,
+  usesEmbeddedHouseStyle,
 } from "./index.mjs";
 
 const framePacing = matchDeployment("/frame-pacing/");
@@ -68,4 +71,19 @@ test("prefixes root-relative and upstream absolute links", () => {
 
 test("rewrites upstream redirects into the public namespace", () => {
   assert.equal(rewriteLocation("/diff-walkthrough.html", actions), "/actions/diff-walkthrough.html");
+});
+
+test("builds the shared house-style shell from deployment metadata", () => {
+  assert.equal(houseStyleClassName(zeroCopy), "spec-house spec-house--zero-copy");
+
+  const header = createHouseStyleHeader(zeroCopy);
+  assert.match(header, />Z</);
+  assert.match(header, />Zero-copy rendering</);
+  assert.match(header, /https:\/\/specs\.sebastiano\.dev\/actions\//);
+});
+
+test("does not wrap specs that already carry the house shell", () => {
+  assert.equal(usesEmbeddedHouseStyle(actions), true);
+  assert.equal(usesEmbeddedHouseStyle(zeroCopy), true);
+  assert.equal(usesEmbeddedHouseStyle(framePacing), false);
 });
