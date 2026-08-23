@@ -22,9 +22,9 @@
         {
           "id": "compose-stack-traces-in-the-ide",
           "title": "Compose stack traces in the IDE",
-          "date": "2026-08-18",
+          "date": "2026-08-23",
           "url": "https://specs.sebastiano.dev/compose-stack-traces/",
-          "description": "A proposal to name the composable that crashed: cheap group-key traces by default, decoded at exception time, with a high-detail mode behind a flag."
+          "description": "A proposal for build-pinned Compose crash mappings, default group-key diagnostics, and an opt-in high-detail mode."
         }
       ]
     },
@@ -36,9 +36,9 @@
         {
           "id": "pioneer-profile-file-design",
           "title": "Profile-file design",
-          "date": "2026-08-15",
+          "date": "2026-08-23",
           "url": "https://specs.sebastiano.dev/pioneer-profile-file-design/",
-          "description": "A default-deny design for explicitly selected Pi extensions and brokered MCP servers, refreshed for Pioneer 0.1.8."
+          "description": "A default-deny manifest for explicitly selected Pi extensions and controller-brokered MCP servers."
         }
       ]
     },
@@ -50,9 +50,9 @@
         {
           "id": "display-aligned-frame-pacing",
           "title": "Display-aligned frame pacing",
-          "date": "2026-08-13",
+          "date": "2026-08-23",
           "url": "https://specs.sebastiano.dev/frame-pacing/",
-          "description": "The living plan for stopping Compose-for-Desktop UIs from rendering faster than the display can show."
+          "description": "Measured JBR and Skiko paths for aligning Compose-for-Desktop repaint work to the display clock."
         }
       ]
     },
@@ -64,9 +64,9 @@
         {
           "id": "punaro-indirect-internet-architecture",
           "title": "Indirect Internet architecture",
-          "date": "2026-08-12",
+          "date": "2026-08-23",
           "url": "https://specs.sebastiano.dev/punaro-indirect-internet-architecture/",
-          "description": "A Cloudflare-first hybrid design with optional Tailscale access and application-authoritative security."
+          "description": "A Cloudflare-first access design with optional Tailscale routing and Punaro-authoritative security."
         }
       ]
     },
