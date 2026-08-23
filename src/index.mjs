@@ -24,6 +24,11 @@ export const DEPLOYMENTS = [
     binding: "PUNARO_INDIRECT_INTERNET_ARCHITECTURE",
     upstreamOrigin: "https://punaro-indirect-internet-architecture.seeb.workers.dev",
   },
+  {
+    id: "compose-stack-traces",
+    binding: "COMPOSE_STACK_TRACES",
+    upstreamOrigin: "https://compose-stack-traces.seeb.workers.dev",
+  },
 ];
 
 const URL_ATTRIBUTES = ["href", "src", "action", "poster"];

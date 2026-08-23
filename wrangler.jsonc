@@ -37,6 +37,10 @@
     {
       "binding": "ZERO_COPY",
       "service": "zero-copy-prd"
+    },
+    {
+      "binding": "COMPOSE_STACK_TRACES",
+      "service": "compose-stack-traces"
     }
   ]
 }
