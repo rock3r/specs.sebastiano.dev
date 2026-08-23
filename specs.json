@@ -1,6 +1,20 @@
 {
   "projects": [
     {
+      "id": "zero-copy",
+      "name": "Zero-copy rendering",
+      "description": "GPU-resident Compose rendering, retained scene work, and display-aligned pacing across desktop platforms.",
+      "specs": [
+        {
+          "id": "zero-copy-rendering-prd-and-current-state",
+          "title": "Zero-copy rendering: PRD and current state",
+          "date": "2026-08-23",
+          "url": "https://specs.sebastiano.dev/zero-copy/",
+          "description": "Current implementation status, measured wins and misses, shared-texture tradeoffs, and the Linux delivery plan."
+        }
+      ]
+    },
+    {
       "id": "pioneer",
       "name": "Pioneer",
       "description": "A safe local bridge from coding agents to Pi for reviews and isolated evals.",

@@ -1,5 +1,10 @@
 export const DEPLOYMENTS = [
   {
+    id: "zero-copy",
+    binding: "ZERO_COPY",
+    upstreamOrigin: "https://zero-copy-prd.seeb.workers.dev",
+  },
+  {
     id: "frame-pacing",
     binding: "FRAME_PACING",
     upstreamOrigin: "https://frame-pacing.seeb.workers.dev",
