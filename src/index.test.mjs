@@ -85,5 +85,6 @@ test("builds the shared house-style shell from deployment metadata", () => {
 test("does not wrap specs that already carry the house shell", () => {
   assert.equal(usesEmbeddedHouseStyle(actions), true);
   assert.equal(usesEmbeddedHouseStyle(zeroCopy), true);
+  assert.equal(usesEmbeddedHouseStyle({ id: "compose-stack-traces" }), true);
   assert.equal(usesEmbeddedHouseStyle(framePacing), false);
 });

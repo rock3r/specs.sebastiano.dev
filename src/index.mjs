@@ -91,7 +91,7 @@ export const houseStyleClassName = (deployment) =>
   `spec-house spec-house--${deployment.id}`;
 
 export const usesEmbeddedHouseStyle = (deployment) =>
-  deployment.id === "actions" || deployment.id === "zero-copy";
+  deployment.id === "actions" || deployment.id === "zero-copy" || deployment.id === "compose-stack-traces";
 
 export const createHouseStyleHeader = (deployment) => `
   <header class="spec-house-header">
