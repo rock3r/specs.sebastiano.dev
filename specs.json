@@ -15,6 +15,20 @@
       ]
     },
     {
+      "id": "pioneer",
+      "name": "Pioneer",
+      "description": "A safe local bridge from coding agents to Pi for reviews and isolated evals.",
+      "specs": [
+        {
+          "id": "pioneer-profile-file-design",
+          "title": "Profile-file design",
+          "date": "2026-08-24",
+          "url": "https://specs.sebastiano.dev/pioneer-profile-file-design/",
+          "description": "A default-deny capability-profile design, refreshed for Pioneer 0.3.0."
+        }
+      ]
+    },
+    {
       "id": "zero-copy",
       "name": "Zero-copy rendering",
       "description": "GPU-resident Compose rendering, retained scene work, and display-aligned pacing across desktop platforms.",
@@ -25,20 +39,6 @@
           "date": "2026-08-23",
           "url": "https://specs.sebastiano.dev/zero-copy/",
           "description": "Current implementation status, measured wins and misses, shared-texture tradeoffs, and the Linux delivery plan."
-        }
-      ]
-    },
-    {
-      "id": "pioneer",
-      "name": "Pioneer",
-      "description": "A safe local bridge from coding agents to Pi for reviews and isolated evals.",
-      "specs": [
-        {
-          "id": "pioneer-profile-file-design",
-          "title": "Profile-file design",
-          "date": "2026-08-23",
-          "url": "https://specs.sebastiano.dev/pioneer-profile-file-design/",
-          "description": "A default-deny manifest for explicitly selected Pi extensions and controller-brokered MCP servers."
         }
       ]
     },
