@@ -1,6 +1,20 @@
 {
   "projects": [
     {
+      "id": "compose-diagnostics",
+      "name": "Compose diagnostics",
+      "description": "Making Compose failures diagnosable in IntelliJ-based IDEs.",
+      "specs": [
+        {
+          "id": "compose-stack-traces-cost-and-production-shape",
+          "title": "Compose stack traces — cost and production shape",
+          "date": "2026-08-24",
+          "url": "https://specs.sebastiano.dev/compose-stack-traces/",
+          "description": "Measured Bazel compile and Jewel runtime cost for Compose diagnostic stack traces, with IJPL vs Studio ownership."
+        }
+      ]
+    },
+    {
       "id": "zero-copy",
       "name": "Zero-copy rendering",
       "description": "GPU-resident Compose rendering, retained scene work, and display-aligned pacing across desktop platforms.",
@@ -11,20 +25,6 @@
           "date": "2026-08-23",
           "url": "https://specs.sebastiano.dev/zero-copy/",
           "description": "Current implementation status, measured wins and misses, shared-texture tradeoffs, and the Linux delivery plan."
-        }
-      ]
-    },
-    {
-      "id": "compose-diagnostics",
-      "name": "Compose diagnostics",
-      "description": "Making Compose failures diagnosable in IntelliJ-based IDEs.",
-      "specs": [
-        {
-          "id": "compose-stack-traces-in-the-ide",
-          "title": "Compose stack traces in the IDE",
-          "date": "2026-08-23",
-          "url": "https://specs.sebastiano.dev/compose-stack-traces/",
-          "description": "A proposal for build-pinned Compose crash mappings, default group-key diagnostics, and an opt-in high-detail mode."
         }
       ]
     },
