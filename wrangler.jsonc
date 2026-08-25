@@ -45,6 +45,10 @@
     {
       "binding": "LAZY_BOTTOM_ANCHORED_COLUMN",
       "service": "lazy-bottom-anchored-column"
+    },
+    {
+      "binding": "STREAMED_TEXT_FADE",
+      "service": "streamed-text-fade"
     }
   ]
 }

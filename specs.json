@@ -15,6 +15,20 @@
       ]
     },
     {
+      "id": "compose-text-rendering",
+      "name": "Compose text rendering",
+      "description": "Draw-phase techniques for text that arrives while it is being read.",
+      "specs": [
+        {
+          "id": "fading-in-streamed-text",
+          "title": "Fading in streamed text",
+          "date": "2026-08-25",
+          "url": "https://specs.sebastiano.dev/streamed-text-fade/",
+          "description": "How a streamed reply paints each new word: draw the paragraph in full, then subtract a word-shaped stencil that gets fainter every frame."
+        }
+      ]
+    },
+    {
       "id": "compose-diagnostics",
       "name": "Compose diagnostics",
       "description": "Making Compose failures diagnosable in IntelliJ-based IDEs.",

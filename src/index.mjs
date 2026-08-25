@@ -48,6 +48,13 @@ export const DEPLOYMENTS = [
     binding: "LAZY_BOTTOM_ANCHORED_COLUMN",
     upstreamOrigin: "https://lazy-bottom-anchored-column.seeb.workers.dev",
   },
+  {
+    id: "streamed-text-fade",
+    title: "Streamed text fade",
+    mark: "S",
+    binding: "STREAMED_TEXT_FADE",
+    upstreamOrigin: "https://streamed-text-fade.seeb.workers.dev",
+  },
 ];
 
 const URL_ATTRIBUTES = ["href", "src", "action", "poster"];
@@ -101,7 +108,8 @@ export const usesEmbeddedHouseStyle = (deployment) =>
   deployment.id === "actions" ||
   deployment.id === "zero-copy" ||
   deployment.id === "compose-stack-traces" ||
-  deployment.id === "lazy-bottom-anchored-column";
+  deployment.id === "lazy-bottom-anchored-column" ||
+  deployment.id === "streamed-text-fade";
 
 export const createHouseStyleHeader = (deployment) => `
   <header class="spec-house-header">
