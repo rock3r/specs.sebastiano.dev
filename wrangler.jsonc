@@ -41,6 +41,10 @@
     {
       "binding": "COMPOSE_STACK_TRACES",
       "service": "compose-stack-traces"
+    },
+    {
+      "binding": "LAZY_BOTTOM_ANCHORED_COLUMN",
+      "service": "lazy-bottom-anchored-column"
     }
   ]
 }

@@ -41,6 +41,13 @@ export const DEPLOYMENTS = [
     binding: "COMPOSE_STACK_TRACES",
     upstreamOrigin: "https://compose-stack-traces.seeb.workers.dev",
   },
+  {
+    id: "lazy-bottom-anchored-column",
+    title: "LazyBottomAnchoredColumn",
+    mark: "L",
+    binding: "LAZY_BOTTOM_ANCHORED_COLUMN",
+    upstreamOrigin: "https://lazy-bottom-anchored-column.seeb.workers.dev",
+  },
 ];
 
 const URL_ATTRIBUTES = ["href", "src", "action", "poster"];
@@ -91,7 +98,10 @@ export const houseStyleClassName = (deployment) =>
   `spec-house spec-house--${deployment.id}`;
 
 export const usesEmbeddedHouseStyle = (deployment) =>
-  deployment.id === "actions" || deployment.id === "zero-copy" || deployment.id === "compose-stack-traces";
+  deployment.id === "actions" ||
+  deployment.id === "zero-copy" ||
+  deployment.id === "compose-stack-traces" ||
+  deployment.id === "lazy-bottom-anchored-column";
 
 export const createHouseStyleHeader = (deployment) => `
   <header class="spec-house-header">

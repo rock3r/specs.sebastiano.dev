@@ -1,6 +1,20 @@
 {
   "projects": [
     {
+      "id": "compose-lazy-layouts",
+      "name": "Compose lazy layouts",
+      "description": "Lazy list design for content that grows at the bottom.",
+      "specs": [
+        {
+          "id": "lazybottomanchoredcolumn-a-lazy-list-for-ai-chat",
+          "title": "LazyBottomAnchoredColumn: a lazy list for AI chat",
+          "date": "2026-08-25",
+          "url": "https://specs.sebastiano.dev/lazy-bottom-anchored-column/",
+          "description": "A design proposal for bottom-anchored lazy layout: reserved scroll range, prefix-sum geometry, content-type height estimation, a bounded measurement budget, and a key-based reading anchor."
+        }
+      ]
+    },
+    {
       "id": "compose-diagnostics",
       "name": "Compose diagnostics",
       "description": "Making Compose failures diagnosable in IntelliJ-based IDEs.",
