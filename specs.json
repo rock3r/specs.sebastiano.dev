@@ -8,9 +8,9 @@
         {
           "id": "lazybottomanchoredcolumn-a-lazy-list-for-ai-chat",
           "title": "LazyBottomAnchoredColumn: a lazy list for AI chat",
-          "date": "2026-08-25",
+          "date": "2026-08-26",
           "url": "https://specs.sebastiano.dev/lazy-bottom-anchored-column/",
-          "description": "A design proposal for bottom-anchored lazy layout: reserved scroll range, prefix-sum geometry, content-type height estimation, a bounded measurement budget, and a key-based reading anchor."
+          "description": "Adopting the Wear Compose first-layout-item provider, and the ideas it leaves unanswered: reserved scroll range, prefix-sum geometry, and content-type height estimation."
         }
       ]
     },
