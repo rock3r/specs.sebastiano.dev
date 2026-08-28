@@ -1,6 +1,20 @@
 {
   "projects": [
     {
+      "id": "frame-pacing",
+      "name": "FramePacing",
+      "description": "A display-aligned frame pacing clock for the JetBrains Runtime.",
+      "specs": [
+        {
+          "id": "display-aligned-frame-pacing",
+          "title": "Display-aligned frame pacing",
+          "date": "2026-08-27",
+          "url": "https://specs.sebastiano.dev/frame-pacing/",
+          "description": "Measured JBR and Skiko paths for aligning Compose-for-Desktop repaint work to the display clock."
+        }
+      ]
+    },
+    {
       "id": "compose-lazy-layouts",
       "name": "Compose lazy layouts",
       "description": "Lazy list design for content that grows at the bottom.",
@@ -67,20 +81,6 @@
           "date": "2026-08-23",
           "url": "https://specs.sebastiano.dev/zero-copy/",
           "description": "Current implementation status, measured wins and misses, shared-texture tradeoffs, and the Linux delivery plan."
-        }
-      ]
-    },
-    {
-      "id": "frame-pacing",
-      "name": "FramePacing",
-      "description": "A display-aligned frame pacing clock for the JetBrains Runtime.",
-      "specs": [
-        {
-          "id": "display-aligned-frame-pacing",
-          "title": "Display-aligned frame pacing",
-          "date": "2026-08-23",
-          "url": "https://specs.sebastiano.dev/frame-pacing/",
-          "description": "Measured JBR and Skiko paths for aligning Compose-for-Desktop repaint work to the display clock."
         }
       ]
     },
