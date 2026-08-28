@@ -2,15 +2,15 @@
   "projects": [
     {
       "id": "frame-pacing",
-      "name": "FramePacing",
-      "description": "A display-aligned frame pacing clock for the JetBrains Runtime.",
+      "name": "Skiko frame pacing",
+      "description": "Vsync and frame pacing for Swing and Compose apps drawn by Skiko, on any JVM.",
       "specs": [
         {
-          "id": "display-aligned-frame-pacing",
-          "title": "Display-aligned frame pacing",
+          "id": "skiko-vsync-and-frame-pacing",
+          "title": "Skiko vsync and frame pacing",
           "date": "2026-08-28",
           "url": "https://specs.sebastiano.dev/frame-pacing/",
-          "description": "Measured JBR and Skiko paths for aligning Compose-for-Desktop repaint work to the display clock."
+          "description": "Why Skiko paces repaints to the display, what it measures, and what it does not fix."
         }
       ]
     },
