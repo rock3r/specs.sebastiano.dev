@@ -8,7 +8,7 @@
         {
           "id": "display-aligned-frame-pacing",
           "title": "Display-aligned frame pacing",
-          "date": "2026-08-27",
+          "date": "2026-08-28",
           "url": "https://specs.sebastiano.dev/frame-pacing/",
           "description": "Measured JBR and Skiko paths for aligning Compose-for-Desktop repaint work to the display clock."
         }
