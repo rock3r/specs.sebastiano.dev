@@ -1,16 +1,16 @@
 {
   "projects": [
     {
-      "id": "etc",
-      "name": "Emulator Traffic Control",
-      "description": "Daemonless Android emulator lease, FIFO wait queue, and agent hook guardrails around the official android CLI.",
+      "id": "atc",
+      "name": "Android Traffic Control",
+      "description": "Daemonless Android emulator and physical device leases, bounded-window warm-affinity wait queue, snapshots, and multi-agent guardrails around the official android CLI.",
       "specs": [
         {
-          "id": "emulator-traffic-control-etc-mvp-design-spec",
-          "title": "Emulator Traffic Control (ETC): MVP design spec",
+          "id": "android-traffic-control-atc-mvp-design-spec",
+          "title": "Android Traffic Control (ATC): MVP design spec",
           "date": "2026-10-06",
-          "url": "https://specs.sebastiano.dev/etc/",
-          "description": "Exclusive TTL-bounded emulator leases, a daemonless FIFO wait queue, and cooperative PreToolUse/Stop hooks for Claude Code, Gemini/Jetski, and Codex."
+          "url": "https://specs.sebastiano.dev/atc/",
+          "description": "Exclusive TTL-bounded emulator and physical device leases, a daemonless warm-affinity wait queue, snapshots, and cooperative guardrails for Codex, Pi, Cursor, Antigravity, Gemini CLI, and Claude Code."
         }
       ]
     },

@@ -56,9 +56,16 @@ export const DEPLOYMENTS = [
     upstreamOrigin: "https://streamed-text-fade.seeb.workers.dev",
   },
   {
+    id: "atc",
+    title: "Android Traffic Control",
+    mark: "A",
+    binding: "ETC",
+    upstreamOrigin: "https://emulator-traffic-control.seeb.workers.dev",
+  },
+  {
     id: "etc",
-    title: "Emulator Traffic Control",
-    mark: "E",
+    title: "Android Traffic Control",
+    mark: "A",
     binding: "ETC",
     upstreamOrigin: "https://emulator-traffic-control.seeb.workers.dev",
   },
@@ -117,6 +124,7 @@ export const usesEmbeddedHouseStyle = (deployment) =>
   deployment.id === "compose-stack-traces" ||
   deployment.id === "lazy-bottom-anchored-column" ||
   deployment.id === "streamed-text-fade" ||
+  deployment.id === "atc" ||
   deployment.id === "etc";
 
 export const createHouseStyleHeader = (deployment) => `
