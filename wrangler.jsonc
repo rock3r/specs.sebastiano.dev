@@ -51,8 +51,8 @@
       "service": "streamed-text-fade"
     },
     {
-      "binding": "ETC",
-      "service": "emulator-traffic-control"
+      "binding": "ATC",
+      "service": "android-traffic-control"
     }
   ]
 }
