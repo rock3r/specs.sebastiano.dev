@@ -1,6 +1,20 @@
 {
   "projects": [
     {
+      "id": "etc",
+      "name": "Emulator Traffic Control",
+      "description": "Daemonless Android emulator lease, FIFO wait queue, and agent hook guardrails around the official android CLI.",
+      "specs": [
+        {
+          "id": "emulator-traffic-control-etc-mvp-design-spec",
+          "title": "Emulator Traffic Control (ETC): MVP design spec",
+          "date": "2026-10-06",
+          "url": "https://specs.sebastiano.dev/etc/",
+          "description": "Exclusive TTL-bounded emulator leases, a daemonless FIFO wait queue, and cooperative PreToolUse/Stop hooks for Claude Code, Gemini/Jetski, and Codex."
+        }
+      ]
+    },
+    {
       "id": "frame-pacing",
       "name": "Skiko frame pacing",
       "description": "Vsync and frame pacing for Swing and Compose apps drawn by Skiko, on any JVM.",

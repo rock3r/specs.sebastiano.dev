@@ -49,6 +49,10 @@
     {
       "binding": "STREAMED_TEXT_FADE",
       "service": "streamed-text-fade"
+    },
+    {
+      "binding": "ETC",
+      "service": "emulator-traffic-control"
     }
   ]
 }

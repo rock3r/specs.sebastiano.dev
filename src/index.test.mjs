@@ -16,6 +16,7 @@ const actions = matchDeployment("/actions/diff-walkthrough.html");
 const pioneer = matchDeployment("/pioneer-profile-file-design/");
 const punaro = matchDeployment("/punaro-indirect-internet-architecture/");
 const zeroCopy = matchDeployment("/zero-copy/");
+const etc = matchDeployment("/etc/");
 
 test("matches only deployment path boundaries", () => {
   assert.equal(framePacing?.binding, "FRAME_PACING");
@@ -23,10 +24,12 @@ test("matches only deployment path boundaries", () => {
   assert.equal(pioneer?.binding, "PIONEER_PROFILE_FILE_DESIGN");
   assert.equal(punaro?.binding, "PUNARO_INDIRECT_INTERNET_ARCHITECTURE");
   assert.equal(zeroCopy?.binding, "ZERO_COPY");
+  assert.equal(etc?.binding, "ETC");
   assert.equal(matchDeployment("/action"), undefined);
   assert.equal(matchDeployment("/actions-extra"), undefined);
   assert.equal(matchDeployment("/punaro-indirect-internet-architecture-extra"), undefined);
   assert.equal(matchDeployment("/zero-copy-extra"), undefined);
+  assert.equal(matchDeployment("/etc-extra"), undefined);
 });
 
 test("maps the zero-copy public root and assets to its Worker", () => {

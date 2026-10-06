@@ -55,6 +55,13 @@ export const DEPLOYMENTS = [
     binding: "STREAMED_TEXT_FADE",
     upstreamOrigin: "https://streamed-text-fade.seeb.workers.dev",
   },
+  {
+    id: "etc",
+    title: "Emulator Traffic Control",
+    mark: "E",
+    binding: "ETC",
+    upstreamOrigin: "https://emulator-traffic-control.seeb.workers.dev",
+  },
 ];
 
 const URL_ATTRIBUTES = ["href", "src", "action", "poster"];
@@ -109,7 +116,8 @@ export const usesEmbeddedHouseStyle = (deployment) =>
   deployment.id === "zero-copy" ||
   deployment.id === "compose-stack-traces" ||
   deployment.id === "lazy-bottom-anchored-column" ||
-  deployment.id === "streamed-text-fade";
+  deployment.id === "streamed-text-fade" ||
+  deployment.id === "etc";
 
 export const createHouseStyleHeader = (deployment) => `
   <header class="spec-house-header">
