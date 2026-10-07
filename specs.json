@@ -1,6 +1,20 @@
 {
   "projects": [
     {
+      "id": "cav",
+      "name": "cav",
+      "description": "Motion graphics in Cavalry from a terminal, for people and coding agents.",
+      "specs": [
+        {
+          "id": "production-tools-for-cav",
+          "title": "Production tools for cav",
+          "date": "2026-10-07",
+          "url": "https://specs.sebastiano.dev/cav-production-tools/",
+          "description": "Storyboards, references, music, listening, sound sources and frame-accurate review for cav, free first and better with an API key."
+        }
+      ]
+    },
+    {
       "id": "atc",
       "name": "Android Traffic Control",
       "description": "Daemonless Android emulator and physical device leases, bounded-window warm-affinity wait queue, snapshots, and multi-agent guardrails around the official android CLI.",

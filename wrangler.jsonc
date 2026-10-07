@@ -53,6 +53,10 @@
     {
       "binding": "ATC",
       "service": "android-traffic-control"
+    },
+    {
+      "binding": "CAV_PRODUCTION_TOOLS",
+      "service": "cav-production-tools"
     }
   ]
 }

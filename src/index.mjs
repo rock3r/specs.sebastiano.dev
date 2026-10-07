@@ -62,6 +62,13 @@ export const DEPLOYMENTS = [
     binding: "ATC",
     upstreamOrigin: "https://android-traffic-control.seeb.workers.dev",
   },
+  {
+    id: "cav-production-tools",
+    title: "cav production tools",
+    mark: "C",
+    binding: "CAV_PRODUCTION_TOOLS",
+    upstreamOrigin: "https://cav-production-tools.seeb.workers.dev",
+  },
 ];
 
 const URL_ATTRIBUTES = ["href", "src", "action", "poster"];
