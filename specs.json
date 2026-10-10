@@ -1,6 +1,20 @@
 {
   "projects": [
     {
+      "id": "atc",
+      "name": "Android Traffic Control",
+      "description": "Daemonless Android emulator and physical device leases, bounded-window warm-affinity wait queue, snapshots, and multi-agent guardrails around the official android CLI.",
+      "specs": [
+        {
+          "id": "android-traffic-control-atc-mvp-design-spec",
+          "title": "Android Traffic Control (ATC): MVP design spec",
+          "date": "2026-10-10",
+          "url": "https://specs.sebastiano.dev/atc/",
+          "description": "Exclusive TTL-bounded emulator and physical device leases, a daemonless warm-affinity wait queue, snapshots, and cooperative guardrails for Codex, Pi, Cursor, Antigravity, Gemini CLI, and Claude Code."
+        }
+      ]
+    },
+    {
       "id": "cav",
       "name": "cav",
       "description": "Motion graphics in Cavalry from a terminal, for people and coding agents.",
@@ -11,20 +25,6 @@
           "date": "2026-10-08",
           "url": "https://specs.sebastiano.dev/cav-production-tools/",
           "description": "Storyboards, references, music, listening, sound sources and frame-accurate review for cav, free first and better with an API key."
-        }
-      ]
-    },
-    {
-      "id": "atc",
-      "name": "Android Traffic Control",
-      "description": "Daemonless Android emulator and physical device leases, bounded-window warm-affinity wait queue, snapshots, and multi-agent guardrails around the official android CLI.",
-      "specs": [
-        {
-          "id": "android-traffic-control-atc-mvp-design-spec",
-          "title": "Android Traffic Control (ATC): MVP design spec",
-          "date": "2026-10-06",
-          "url": "https://specs.sebastiano.dev/atc/",
-          "description": "Exclusive TTL-bounded emulator and physical device leases, a daemonless warm-affinity wait queue, snapshots, and cooperative guardrails for Codex, Pi, Cursor, Antigravity, Gemini CLI, and Claude Code."
         }
       ]
     },
