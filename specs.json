@@ -6,8 +6,8 @@
       "description": "Daemonless Android emulator and physical device leases, bounded-window warm-affinity wait queue, snapshots, and multi-agent guardrails around the official android CLI.",
       "specs": [
         {
-          "id": "android-traffic-control-atc-mvp-design-spec",
-          "title": "Android Traffic Control (ATC): MVP design spec",
+          "id": "android-traffic-control-atc-1-0-design-spec",
+          "title": "Android Traffic Control (ATC): 1.0 design spec",
           "date": "2026-10-10",
           "url": "https://specs.sebastiano.dev/atc/",
           "description": "Exclusive TTL-bounded emulator and physical device leases, a daemonless warm-affinity wait queue, snapshots, and cooperative guardrails for Codex, Pi, Cursor, Antigravity, Gemini CLI, and Claude Code."
