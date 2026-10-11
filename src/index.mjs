@@ -57,7 +57,7 @@ export const DEPLOYMENTS = [
   },
   {
     id: "atc",
-    title: "Android Traffic Control",
+    title: "Agent Traffic Control",
     mark: "A",
     binding: "ATC",
     upstreamOrigin: "https://android-traffic-control.seeb.workers.dev",
