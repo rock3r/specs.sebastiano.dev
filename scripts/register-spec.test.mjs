@@ -62,7 +62,7 @@ test("the same version replaces its revision and a new version goes first", asyn
     spec.history.map((revision) => [revision.version, revision.date, revision.changes]),
     [
       ["1.1", "2026-10-05", ["More"]],
-      ["1.0", "2026-10-02", ["First, fixed"]],
+      ["1.0", "2026-10-01", ["First, fixed"]],
     ],
   );
 });
@@ -132,4 +132,30 @@ test("pre-release numbers compare numerically and backfills keep the current dat
   assert.equal(spec.version, "1.0-rc10");
   assert.equal(spec.date, "2026-10-02");
   assert.deepEqual(spec.history.map((revision) => revision.version), ["1.0-rc10", "1.0-rc9", "0.9"]);
+});
+
+test("an option without a value and a version without a change are rejected", async () => {
+  const catalog = await fresh();
+  await assert.rejects(register(catalog, ...tools, "--date", "2026-10-01", "--version"), /--version needs a value/);
+  await assert.rejects(register(catalog, ...tools, "--date", "2026-10-01", "--version", "1.0"), /needs at least one --change/);
+});
+
+test("pre-release suffixes order like semver, with no locale involved", async () => {
+  const catalog = await fresh();
+  for (const version of ["1.0-rc.10", "1.0-alpha", "1.0-rc.2", "1.0-beta.1", "1.0-rc"]) {
+    await register(catalog, ...tools, "--date", "2026-10-01", "--version", version, "--change", version);
+  }
+  const [spec] = await specs(catalog);
+  assert.deepEqual(
+    spec.history.map((revision) => revision.version),
+    ["1.0-rc.10", "1.0-rc.2", "1.0-rc", "1.0-beta.1", "1.0-alpha"],
+  );
+});
+
+test("a date that does not apply is reported", async () => {
+  const catalog = await fresh();
+  await register(catalog, ...tools, "--date", "2026-10-01", "--version", "1.0", "--change", "First");
+  const { stderr } = await register(catalog, ...tools, "--date", "2026-10-09", "--description", "Reworded");
+  assert.match(stderr, /keeps 2026-10-01, the date of v1\.0/);
+  assert.equal((await specs(catalog))[0].date, "2026-10-01");
 });

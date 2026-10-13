@@ -36,7 +36,12 @@ and adds the spec to the project otherwise.
 `--version` and `--change` are optional but expected for every publish. The helper adds a
 revision to the spec's `history` (newest first) and sets `version` to the newest one. Publishing
 the same version again replaces that revision. The [sebastiano.dev feed](https://sebastiano.dev/updates/?tag=spec)
-turns each revision into one entry, so bump the version for every published change. Before registering a new deployment,
+turns each revision into one entry, so bump the version for every published change.
+
+Every `--version` needs at least one `--change`. Correcting a version that already exists keeps
+its original date, so its feed entry does not move. A versioned spec always shows the date of its
+newest version, and the helper prints a note when it ignores `--date` for that reason. History
+belongs to the spec row, so keep the same `--project-id` when you re-register a spec. Before registering a new deployment,
 add its Worker service binding to `wrangler.jsonc` and its path mapping to `src/index.mjs`.
 
 ## Deploy
