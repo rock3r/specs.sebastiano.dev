@@ -82,6 +82,22 @@ if (!project) {
   project.description = options["project-description"];
 }
 
+// Orders versions like 2.1.0 > 2.1 > 2.1.0-rc1 > 2.0. A suffix marks a pre-release.
+const compareVersions = (a, b) => {
+  const [coreA, suffixA = ""] = a.split(/-(.*)/s);
+  const [coreB, suffixB = ""] = b.split(/-(.*)/s);
+  const partsA = coreA.split(".").map(Number);
+  const partsB = coreB.split(".").map(Number);
+  for (let i = 0; i < Math.max(partsA.length, partsB.length); i += 1) {
+    const diff = (partsA[i] ?? 0) - (partsB[i] ?? 0);
+    if (diff !== 0) return diff;
+  }
+  if (suffixA === suffixB) return 0;
+  if (!suffixA) return 1;
+  if (!suffixB) return -1;
+  return suffixA.localeCompare(suffixB);
+};
+
 const id = options.id || slugify(options.title);
 // One deployment gets one row: replace the spec with the same URL or id, keep the others.
 const existing = project.specs.findIndex((entry) => entry.url === options.url || entry.id === id);
@@ -99,10 +115,18 @@ if (options.version) {
     history.push({ date: previous.date, changes: [] });
   }
   const revision = { version: options.version, date: options.date, changes: changes.map((change) => change.trim()) };
-  // Correcting an existing version keeps its place, so a newer version stays first and current.
+  // Correcting an existing version keeps its place. A new version goes in version order, so
+  // backfilling an older one never displaces the newest. Dated revisions without a version
+  // predate versioning and stay last.
   const index = history.findIndex((entry) => entry.version === options.version);
-  if (index >= 0) history[index] = revision;
-  else history.unshift(revision);
+  if (index >= 0) {
+    history[index] = revision;
+  } else {
+    const before = history.findIndex(
+      (entry) => !entry.version || compareVersions(entry.version, options.version) < 0,
+    );
+    history.splice(before >= 0 ? before : history.length, 0, revision);
+  }
 }
 
 const spec = {

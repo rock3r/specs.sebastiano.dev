@@ -98,3 +98,17 @@ test("correcting an older version keeps the newer version current", async () => 
     ],
   );
 });
+
+test("backfilling an older version keeps the newest version first", async () => {
+  const catalog = await fresh();
+  await register(catalog, ...tools, "--date", "2026-09-01");
+  await register(catalog, ...tools, "--date", "2026-10-05", "--version", "1.10", "--change", "Ten");
+  await register(catalog, ...tools, "--date", "2026-10-06", "--version", "1.2", "--change", "Two");
+  await register(catalog, ...tools, "--date", "2026-10-07", "--version", "1.10.1-rc1", "--change", "RC");
+  const [spec] = await specs(catalog);
+  assert.equal(spec.version, "1.10.1-rc1");
+  assert.deepEqual(
+    spec.history.map((revision) => revision.version ?? revision.date),
+    ["1.10.1-rc1", "1.10", "1.2", "2026-09-01"],
+  );
+});
