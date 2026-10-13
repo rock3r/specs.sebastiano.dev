@@ -98,8 +98,11 @@ if (options.version) {
     // feed entry it already produced stays in place.
     history.push({ date: previous.date, changes: [] });
   }
-  history = history.filter((revision) => revision.version !== options.version);
-  history.unshift({ version: options.version, date: options.date, changes: changes.map((change) => change.trim()) });
+  const revision = { version: options.version, date: options.date, changes: changes.map((change) => change.trim()) };
+  // Correcting an existing version keeps its place, so a newer version stays first and current.
+  const index = history.findIndex((entry) => entry.version === options.version);
+  if (index >= 0) history[index] = revision;
+  else history.unshift(revision);
 }
 
 const spec = {

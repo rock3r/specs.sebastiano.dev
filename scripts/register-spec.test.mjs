@@ -82,3 +82,19 @@ test("bad versions and changes without a version are rejected", async () => {
   await assert.rejects(register(catalog, ...tools, "--date", "2026-10-01", "--version", "v1"), /--version must look like/);
   await assert.rejects(register(catalog, ...tools, "--date", "2026-10-01", "--change", "Orphan"), /--change needs --version/);
 });
+
+test("correcting an older version keeps the newer version current", async () => {
+  const catalog = await fresh();
+  await register(catalog, ...tools, "--date", "2026-10-01", "--version", "1.0", "--change", "First");
+  await register(catalog, ...tools, "--date", "2026-10-05", "--version", "1.1", "--change", "More");
+  await register(catalog, ...tools, "--date", "2026-10-06", "--version", "1.0", "--change", "First, fixed");
+  const [spec] = await specs(catalog);
+  assert.equal(spec.version, "1.1");
+  assert.deepEqual(
+    spec.history.map((revision) => [revision.version, revision.changes]),
+    [
+      ["1.1", ["More"]],
+      ["1.0", ["First, fixed"]],
+    ],
+  );
+});
