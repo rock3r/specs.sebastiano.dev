@@ -69,6 +69,13 @@ export const DEPLOYMENTS = [
     binding: "CAV_PRODUCTION_TOOLS",
     upstreamOrigin: "https://cav-production-tools.seeb.workers.dev",
   },
+  {
+    id: "cav-workflow",
+    title: "cav production workflow",
+    mark: "C",
+    binding: "CAV_WORKFLOW",
+    upstreamOrigin: "https://cav-workflow.seeb.workers.dev",
+  },
 ];
 
 const URL_ATTRIBUTES = ["href", "src", "action", "poster"];

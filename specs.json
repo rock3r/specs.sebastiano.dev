@@ -1,6 +1,27 @@
 {
   "projects": [
     {
+      "id": "cav",
+      "name": "cav",
+      "description": "Motion graphics in Cavalry from a terminal, for people and coding agents.",
+      "specs": [
+        {
+          "id": "cav-production-workflow",
+          "title": "A production workflow for cav",
+          "date": "2026-10-13",
+          "url": "https://specs.sebastiano.dev/cav-workflow/",
+          "description": "An optional standard flow from brief to final render, with a review before each slow or paid step, and a user's own flow file to replace it."
+        },
+        {
+          "id": "production-tools-for-cav",
+          "title": "Production tools for cav",
+          "date": "2026-10-08",
+          "url": "https://specs.sebastiano.dev/cav-production-tools/",
+          "description": "Storyboards, references, music, listening, sound sources and frame-accurate review for cav, free first and better with an API key."
+        }
+      ]
+    },
+    {
       "id": "atc",
       "name": "Agent Traffic Control",
       "description": "Daemonless Android emulator, iOS Simulator, and physical device leases, bounded-window warm-affinity wait queue, snapshots, and multi-agent guardrails.",
@@ -11,20 +32,6 @@
           "date": "2026-10-11",
           "url": "https://specs.sebastiano.dev/atc/",
           "description": "Exclusive TTL-bounded Android and iOS device leases, KMP dual-lease sessions, QEMU and APFS snapshots, crash recovery, and cooperative guardrails for Codex, Pi, Cursor, Antigravity, Gemini CLI, and Claude Code."
-        }
-      ]
-    },
-    {
-      "id": "cav",
-      "name": "cav",
-      "description": "Motion graphics in Cavalry from a terminal, for people and coding agents.",
-      "specs": [
-        {
-          "id": "production-tools-for-cav",
-          "title": "Production tools for cav",
-          "date": "2026-10-08",
-          "url": "https://specs.sebastiano.dev/cav-production-tools/",
-          "description": "Storyboards, references, music, listening, sound sources and frame-accurate review for cav, free first and better with an API key."
         }
       ]
     },

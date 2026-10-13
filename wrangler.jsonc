@@ -57,6 +57,10 @@
     {
       "binding": "CAV_PRODUCTION_TOOLS",
       "service": "cav-production-tools"
+    },
+    {
+      "binding": "CAV_WORKFLOW",
+      "service": "cav-workflow"
     }
   ]
 }
