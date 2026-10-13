@@ -27,7 +27,8 @@ node scripts/register-spec.mjs \
   --description "The living design document and proof matrix."
 ```
 
-The helper replaces the project's canonical entry. Before registering a new deployment,
+A project can hold several specs. The helper updates the spec with the same URL or id,
+and adds the spec to the project otherwise. Before registering a new deployment,
 add its Worker service binding to `wrangler.jsonc` and its path mapping to `src/index.mjs`.
 
 ## Deploy

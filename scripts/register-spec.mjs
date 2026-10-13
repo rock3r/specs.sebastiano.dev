@@ -3,7 +3,6 @@
 import { readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 
-const catalogPath = resolve(new URL("..", import.meta.url).pathname, "specs.json");
 const args = process.argv.slice(2);
 const options = {};
 
@@ -44,6 +43,9 @@ if (
   process.exit(1);
 }
 
+const catalogPath = options.catalog
+  ? resolve(options.catalog)
+  : resolve(new URL("..", import.meta.url).pathname, "specs.json");
 const slugify = (value) => value.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 const catalog = JSON.parse(await readFile(catalogPath, "utf8"));
 const projectId = options["project-id"] || slugify(options.project);
@@ -70,8 +72,11 @@ const spec = {
   ...(options.kind ? { kind: options.kind } : {}),
 };
 
-const replacedExisting = project.specs.length > 0;
-project.specs = [spec];
+// One deployment gets one row: replace the spec with the same URL or id, keep the others.
+const existing = project.specs.findIndex((entry) => entry.url === spec.url || entry.id === spec.id);
+const replacedExisting = existing >= 0;
+if (replacedExisting) project.specs[existing] = spec;
+else project.specs.push(spec);
 
 for (const entry of catalog.projects) entry.specs.sort((a, b) => b.date.localeCompare(a.date));
 catalog.projects.sort((a, b) => (b.specs[0]?.date || "").localeCompare(a.specs[0]?.date || ""));
