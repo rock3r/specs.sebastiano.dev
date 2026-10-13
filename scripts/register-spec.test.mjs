@@ -159,3 +159,10 @@ test("a date that does not apply is reported", async () => {
   assert.match(stderr, /keeps 2026-10-01, the date of v1\.0/);
   assert.equal((await specs(catalog))[0].date, "2026-10-01");
 });
+
+test("numbers beyond the safe integer range stay distinct", async () => {
+  const catalog = await fresh();
+  await register(catalog, ...tools, "--date", "2026-10-01", "--version", "1.0-rc9007199254740992", "--change", "A");
+  await register(catalog, ...tools, "--date", "2026-10-02", "--version", "1.0-rc9007199254740993", "--change", "B");
+  assert.equal((await specs(catalog))[0].version, "1.0-rc9007199254740993");
+});

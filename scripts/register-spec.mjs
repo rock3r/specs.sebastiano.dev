@@ -96,6 +96,12 @@ if (!project) {
 // and "-", and also where letters meet digits, so rc9 < rc10. Numbers compare as numbers and
 // sort before words, and words compare by code point. A longer suffix wins when the shorter
 // one is its prefix.
+// Digit strings compare as BigInt, so numbers of any length stay distinct.
+const compareNumbers = (a, b) => {
+  const [x, y] = [BigInt(a), BigInt(b)];
+  return x === y ? 0 : x < y ? -1 : 1;
+};
+
 const SUFFIX_IDENTIFIERS = /[.-]|(?<=\D)(?=\d)|(?<=\d)(?=\D)/;
 const compareSuffixes = (a, b) => {
   const idsA = a.split(SUFFIX_IDENTIFIERS).filter(Boolean);
@@ -104,7 +110,7 @@ const compareSuffixes = (a, b) => {
     const numA = /^\d+$/.test(idsA[i]);
     const numB = /^\d+$/.test(idsB[i]);
     if (numA && numB) {
-      const diff = Number(idsA[i]) - Number(idsB[i]);
+      const diff = compareNumbers(idsA[i], idsB[i]);
       if (diff !== 0) return diff;
     } else if (numA !== numB) {
       return numA ? -1 : 1;
@@ -119,10 +125,10 @@ const compareSuffixes = (a, b) => {
 const compareVersions = (a, b) => {
   const [coreA, suffixA = ""] = a.split(/-(.*)/s);
   const [coreB, suffixB = ""] = b.split(/-(.*)/s);
-  const partsA = coreA.split(".").map(Number);
-  const partsB = coreB.split(".").map(Number);
+  const partsA = coreA.split(".");
+  const partsB = coreB.split(".");
   for (let i = 0; i < Math.max(partsA.length, partsB.length); i += 1) {
-    const diff = (partsA[i] ?? 0) - (partsB[i] ?? 0);
+    const diff = compareNumbers(partsA[i] ?? "0", partsB[i] ?? "0");
     if (diff !== 0) return diff;
   }
   if (suffixA === suffixB) return 0;
