@@ -37,7 +37,7 @@ const renderSpec = (spec) => {
 
   const kind = document.createElement("span");
   kind.className = "spec-kind";
-  kind.textContent = spec.kind || "spec";
+  kind.textContent = spec.version ? `${spec.kind || "spec"} · v${spec.version}` : spec.kind || "spec";
   link.append(date, copy, kind);
   return link;
 };

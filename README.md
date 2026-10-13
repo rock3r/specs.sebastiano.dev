@@ -24,11 +24,19 @@ node scripts/register-spec.mjs \
   --title "Actions and shortcuts review" \
   --date 2026-08-11 \
   --url https://specs.sebastiano.dev/actions/ \
-  --description "The living design document and proof matrix."
+  --description "The living design document and proof matrix." \
+  --version 1.2 \
+  --change "Added the proof matrix for editor shortcuts." \
+  --change "Fixed the macOS keymap table."
 ```
 
 A project can hold several specs. The helper updates the spec with the same URL or id,
-and adds the spec to the project otherwise. Before registering a new deployment,
+and adds the spec to the project otherwise.
+
+`--version` and `--change` are optional but expected for every publish. The helper adds a
+revision to the spec's `history` (newest first) and sets `version` to the newest one. Publishing
+the same version again replaces that revision. The [sebastiano.dev feed](https://sebastiano.dev/updates/?tag=spec)
+turns each revision into one entry, so bump the version for every published change. Before registering a new deployment,
 add its Worker service binding to `wrangler.jsonc` and its path mapping to `src/index.mjs`.
 
 ## Deploy
