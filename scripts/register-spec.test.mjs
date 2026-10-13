@@ -122,3 +122,14 @@ test("a second spelling of an existing version is rejected", async () => {
   );
   assert.equal((await specs(catalog))[0].version, "2.1");
 });
+
+test("pre-release numbers compare numerically and backfills keep the current date", async () => {
+  const catalog = await fresh();
+  await register(catalog, ...tools, "--date", "2026-10-01", "--version", "1.0-rc9", "--change", "Nine");
+  await register(catalog, ...tools, "--date", "2026-10-02", "--version", "1.0-rc10", "--change", "Ten");
+  await register(catalog, ...tools, "--date", "2026-09-01", "--version", "0.9", "--change", "Old");
+  const [spec] = await specs(catalog);
+  assert.equal(spec.version, "1.0-rc10");
+  assert.equal(spec.date, "2026-10-02");
+  assert.deepEqual(spec.history.map((revision) => revision.version), ["1.0-rc10", "1.0-rc9", "0.9"]);
+});

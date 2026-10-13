@@ -95,7 +95,7 @@ const compareVersions = (a, b) => {
   if (suffixA === suffixB) return 0;
   if (!suffixA) return 1;
   if (!suffixB) return -1;
-  return suffixA.localeCompare(suffixB);
+  return suffixA.localeCompare(suffixB, "en", { numeric: true });
 };
 
 const id = options.id || slugify(options.title);
@@ -139,7 +139,8 @@ if (options.version) {
 const spec = {
   id,
   title: options.title,
-  date: options.date,
+  // A versioned spec shows the date of its current revision, even when an older one was just added.
+  date: history[0]?.version ? history[0].date : options.date,
   url: options.url,
   ...(options.description ? { description: options.description } : {}),
   ...(options.kind ? { kind: options.kind } : {}),
