@@ -5,12 +5,16 @@ import { resolve } from "node:path";
 
 const args = process.argv.slice(2);
 const options = {};
+// `--change` can repeat: one changelog line per flag.
+const changes = [];
 
 for (let index = 0; index < args.length; index += 1) {
   const argument = args[index];
   if (!argument.startsWith("--")) continue;
   const key = argument.slice(2);
-  options[key] = args[index + 1]?.startsWith("--") ? true : args[++index];
+  const value = args[index + 1]?.startsWith("--") ? true : args[++index];
+  if (key === "change") changes.push(value);
+  else options[key] = value;
 }
 
 const required = ["project", "title", "url", "date"];
@@ -22,6 +26,21 @@ if (missing.length > 0) {
 
 if (!/^\d{4}-\d{2}-\d{2}$/.test(options.date)) {
   console.error("--date must use YYYY-MM-DD");
+  process.exit(1);
+}
+
+if (options.version !== undefined && !/^\d+(\.\d+){0,2}(-[0-9A-Za-z.-]+)?$/.test(options.version)) {
+  console.error("--version must look like 2, 2.1 or 2.1.3, with an optional -suffix");
+  process.exit(1);
+}
+
+if (changes.some((change) => typeof change !== "string" || !change.trim())) {
+  console.error("--change needs a text value");
+  process.exit(1);
+}
+
+if (changes.length > 0 && !options.version) {
+  console.error("--change needs --version: a changelog belongs to a version");
   process.exit(1);
 }
 
@@ -63,22 +82,43 @@ if (!project) {
   project.description = options["project-description"];
 }
 
+const id = options.id || slugify(options.title);
+// One deployment gets one row: replace the spec with the same URL or id, keep the others.
+const existing = project.specs.findIndex((entry) => entry.url === options.url || entry.id === id);
+const replacedExisting = existing >= 0;
+const previous = replacedExisting ? project.specs[existing] : undefined;
+
+// The history is the spec's changelog, newest first. The sebastiano.dev feed turns each
+// revision into one entry, so a revision's version (or date, when it has none) must never be reused
+// for different content.
+let history = previous?.history ? [...previous.history] : [];
+if (options.version) {
+  if (previous && !previous.history?.length) {
+    // The first versioned publish keeps the unversioned state as a dated revision, so the
+    // feed entry it already produced stays in place.
+    history.push({ date: previous.date, changes: [] });
+  }
+  history = history.filter((revision) => revision.version !== options.version);
+  history.unshift({ version: options.version, date: options.date, changes: changes.map((change) => change.trim()) });
+}
+
 const spec = {
-  id: options.id || slugify(options.title),
+  id,
   title: options.title,
   date: options.date,
   url: options.url,
   ...(options.description ? { description: options.description } : {}),
   ...(options.kind ? { kind: options.kind } : {}),
+  ...(history[0]?.version ? { version: history[0].version } : {}),
+  ...(history.length > 0 ? { history } : {}),
 };
 
-// One deployment gets one row: replace the spec with the same URL or id, keep the others.
-const existing = project.specs.findIndex((entry) => entry.url === spec.url || entry.id === spec.id);
-const replacedExisting = existing >= 0;
 if (replacedExisting) project.specs[existing] = spec;
 else project.specs.push(spec);
 
 for (const entry of catalog.projects) entry.specs.sort((a, b) => b.date.localeCompare(a.date));
 catalog.projects.sort((a, b) => (b.specs[0]?.date || "").localeCompare(a.specs[0]?.date || ""));
 await writeFile(catalogPath, `${JSON.stringify(catalog, null, 2)}\n`);
-console.log(`${replacedExisting ? "Updated" : "Registered"} ${spec.title} under ${project.name}`);
+console.log(
+  `${replacedExisting ? "Updated" : "Registered"} ${spec.title}${spec.version ? ` v${spec.version}` : ""} under ${project.name}`,
+);
