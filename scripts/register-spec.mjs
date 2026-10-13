@@ -12,7 +12,12 @@ for (let index = 0; index < args.length; index += 1) {
   const argument = args[index];
   if (!argument.startsWith("--")) continue;
   const key = argument.slice(2);
-  const value = args[index + 1]?.startsWith("--") ? true : args[++index];
+  // Every option takes a value. A missing one must fail, not quietly drop the option.
+  const value = args[index + 1] === undefined || args[index + 1].startsWith("--") ? undefined : args[++index];
+  if (value === undefined) {
+    console.error(`--${key} needs a value`);
+    process.exit(1);
+  }
   if (key === "change") changes.push(value);
   else options[key] = value;
 }
@@ -34,8 +39,13 @@ if (options.version !== undefined && !/^\d+(\.\d+){0,2}(-[0-9A-Za-z.-]+)?$/.test
   process.exit(1);
 }
 
-if (changes.some((change) => typeof change !== "string" || !change.trim())) {
+if (changes.some((change) => !change.trim())) {
   console.error("--change needs a text value");
+  process.exit(1);
+}
+
+if (options.version && changes.length === 0) {
+  console.error("--version needs at least one --change: every version gets a changelog line");
   process.exit(1);
 }
 
@@ -82,20 +92,49 @@ if (!project) {
   project.description = options["project-description"];
 }
 
+// Compares pre-release suffixes like semver, with no locale involved. Identifiers split on "."
+// and "-", and also where letters meet digits, so rc9 < rc10. Numbers compare as numbers and
+// sort before words, and words compare by code point. A longer suffix wins when the shorter
+// one is its prefix.
+// Digit strings compare as BigInt, so numbers of any length stay distinct.
+const compareNumbers = (a, b) => {
+  const [x, y] = [BigInt(a), BigInt(b)];
+  return x === y ? 0 : x < y ? -1 : 1;
+};
+
+const SUFFIX_IDENTIFIERS = /[.-]|(?<=\D)(?=\d)|(?<=\d)(?=\D)/;
+const compareSuffixes = (a, b) => {
+  const idsA = a.split(SUFFIX_IDENTIFIERS).filter(Boolean);
+  const idsB = b.split(SUFFIX_IDENTIFIERS).filter(Boolean);
+  for (let i = 0; i < Math.min(idsA.length, idsB.length); i += 1) {
+    const numA = /^\d+$/.test(idsA[i]);
+    const numB = /^\d+$/.test(idsB[i]);
+    if (numA && numB) {
+      const diff = compareNumbers(idsA[i], idsB[i]);
+      if (diff !== 0) return diff;
+    } else if (numA !== numB) {
+      return numA ? -1 : 1;
+    } else if (idsA[i] !== idsB[i]) {
+      return idsA[i] < idsB[i] ? -1 : 1;
+    }
+  }
+  return idsA.length - idsB.length;
+};
+
 // Orders versions like 2.1.0 > 2.1 > 2.1.0-rc1 > 2.0. A suffix marks a pre-release.
 const compareVersions = (a, b) => {
   const [coreA, suffixA = ""] = a.split(/-(.*)/s);
   const [coreB, suffixB = ""] = b.split(/-(.*)/s);
-  const partsA = coreA.split(".").map(Number);
-  const partsB = coreB.split(".").map(Number);
+  const partsA = coreA.split(".");
+  const partsB = coreB.split(".");
   for (let i = 0; i < Math.max(partsA.length, partsB.length); i += 1) {
-    const diff = (partsA[i] ?? 0) - (partsB[i] ?? 0);
+    const diff = compareNumbers(partsA[i] ?? "0", partsB[i] ?? "0");
     if (diff !== 0) return diff;
   }
   if (suffixA === suffixB) return 0;
   if (!suffixA) return 1;
   if (!suffixB) return -1;
-  return suffixA.localeCompare(suffixB, "en", { numeric: true });
+  return compareSuffixes(suffixA, suffixB);
 };
 
 const id = options.id || slugify(options.title);
@@ -127,7 +166,8 @@ if (options.version) {
   }
   const index = history.findIndex((entry) => entry.version === options.version);
   if (index >= 0) {
-    history[index] = revision;
+    // A correction keeps the revision's original date, so its feed entry does not move.
+    history[index] = { ...revision, date: history[index].date };
   } else {
     const before = history.findIndex(
       (entry) => !entry.version || compareVersions(entry.version, options.version) < 0,
@@ -147,6 +187,12 @@ const spec = {
   ...(history[0]?.version ? { version: history[0].version } : {}),
   ...(history.length > 0 ? { history } : {}),
 };
+
+if (spec.date !== options.date) {
+  console.warn(
+    `Note: the catalog keeps ${spec.date}, the date of v${history[0].version}. --date ${options.date} only applies to a new version.`,
+  );
+}
 
 if (replacedExisting) project.specs[existing] = spec;
 else project.specs.push(spec);
