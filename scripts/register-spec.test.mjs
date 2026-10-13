@@ -112,3 +112,13 @@ test("backfilling an older version keeps the newest version first", async () => 
     ["1.10.1-rc1", "1.10", "1.2", "2026-09-01"],
   );
 });
+
+test("a second spelling of an existing version is rejected", async () => {
+  const catalog = await fresh();
+  await register(catalog, ...tools, "--date", "2026-10-01", "--version", "2.1", "--change", "First");
+  await assert.rejects(
+    register(catalog, ...tools, "--date", "2026-10-02", "--version", "2.1.0", "--change", "Again"),
+    /--version 2\.1\.0 is the same version as 2\.1\. Use 2\.1\./,
+  );
+  assert.equal((await specs(catalog))[0].version, "2.1");
+});

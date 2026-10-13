@@ -118,6 +118,13 @@ if (options.version) {
   // Correcting an existing version keeps its place. A new version goes in version order, so
   // backfilling an older one never displaces the newest. Dated revisions without a version
   // predate versioning and stay last.
+  const twin = history.find(
+    (entry) => entry.version && entry.version !== options.version && compareVersions(entry.version, options.version) === 0,
+  );
+  if (twin) {
+    console.error(`--version ${options.version} is the same version as ${twin.version}. Use ${twin.version}.`);
+    process.exit(1);
+  }
   const index = history.findIndex((entry) => entry.version === options.version);
   if (index >= 0) {
     history[index] = revision;
