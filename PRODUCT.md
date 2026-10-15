@@ -14,7 +14,7 @@ Specs is a small public index for design documents published as Cloudflare Worke
 
 ## Brand Personality
 
-Personal, direct, and playful. It should feel like Sebastiano's existing home page: confident enough to be useful, informal enough to feel authored, and visually memorable without becoming a product dashboard.
+Use Sebastiano's name and monogram to identify the site. Write short project descriptions in a direct, informal voice. Follow the shared document colors, type, and layout in [DESIGN.md](DESIGN.md).
 
 ## Anti-references
 
@@ -23,7 +23,7 @@ Do not make this look like a SaaS dashboard, a generic documentation portal, a c
 ## Design Principles
 
 - Keep the archive legible at a glance: project grouping and date ordering do the organizing work.
-- Let the personal site identity carry the surface: recognizable color, type, and monogram treatment.
+- Keep Sebastiano's name and monogram in the header. Use the shared visual system in [DESIGN.md](DESIGN.md) rather than the home page's colors or type.
 - Prefer a short authored description over metadata clutter.
 - Make every entry a direct path to the source document.
 - Keep publishing mechanical so the index stays current as new Workers appear.
