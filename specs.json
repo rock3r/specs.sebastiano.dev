@@ -8,16 +8,44 @@
         {
           "id": "cav-production-workflow",
           "title": "A production workflow for cav",
-          "date": "2026-10-13",
+          "date": "2026-10-16",
           "url": "https://specs.sebastiano.dev/cav-workflow/",
-          "description": "An optional workflow from brief to final render, with reviews before slow or paid steps and a user-defined file that can replace the default workflow."
+          "description": "An optional workflow from brief to final render, with reviews before slow or paid steps and a user-defined file that can replace the default workflow.",
+          "version": "1.0.1",
+          "history": [
+            {
+              "version": "1.0.1",
+              "date": "2026-10-16",
+              "changes": [
+                "Reworded workflow and reference guidance without changing review gates or licensing rules."
+              ]
+            },
+            {
+              "date": "2026-10-13",
+              "changes": []
+            }
+          ]
         },
         {
           "id": "production-tools-for-cav",
           "title": "Production tools for cav",
-          "date": "2026-10-08",
+          "date": "2026-10-16",
           "url": "https://specs.sebastiano.dev/cav-production-tools/",
-          "description": "Tools for storyboards, references, music analysis, sound sources, and frame-accurate review, with free local defaults and optional API providers."
+          "description": "Tools for storyboards, references, music analysis, sound sources, and frame-accurate review, with free local defaults and optional API providers.",
+          "version": "1.0.1",
+          "history": [
+            {
+              "version": "1.0.1",
+              "date": "2026-10-16",
+              "changes": [
+                "Replaced provider-quality slogans and audio metaphors with descriptions of the available tools."
+              ]
+            },
+            {
+              "date": "2026-10-08",
+              "changes": []
+            }
+          ]
         }
       ]
     },
@@ -29,9 +57,23 @@
         {
           "id": "agent-traffic-control-atc-2-0-design-spec",
           "title": "Agent Traffic Control (ATC): 2.0 design spec",
-          "date": "2026-10-11",
+          "date": "2026-10-16",
           "url": "https://specs.sebastiano.dev/atc/",
-          "description": "Exclusive TTL-bounded Android and iOS device leases, KMP dual-lease sessions, QEMU and APFS snapshots, crash recovery, and cooperative guardrails for Codex, Pi, Cursor, Antigravity, Gemini CLI, and Claude Code."
+          "description": "Exclusive TTL-bounded Android and iOS device leases, KMP dual-lease sessions, QEMU and APFS snapshots, crash recovery, and cooperative guardrails for Codex, Pi, Cursor, Antigravity, Gemini CLI, and Claude Code.",
+          "version": "1.0.1",
+          "history": [
+            {
+              "version": "1.0.1",
+              "date": "2026-10-16",
+              "changes": [
+                "Clarified paired KMP leases and host identity resolution; tightened prose and responsive layout."
+              ]
+            },
+            {
+              "date": "2026-10-11",
+              "changes": []
+            }
+          ]
         }
       ]
     },
@@ -43,9 +85,23 @@
         {
           "id": "skiko-vsync-and-frame-pacing",
           "title": "Skiko vsync and frame pacing",
-          "date": "2026-08-28",
+          "date": "2026-10-16",
           "url": "https://specs.sebastiano.dev/frame-pacing/",
-          "description": "Why Skiko paces repaints to the display, what it measures, and what it does not fix."
+          "description": "Why Skiko paces repaints to the display, what it measures, and what it does not fix.",
+          "version": "1.0.1",
+          "history": [
+            {
+              "version": "1.0.1",
+              "date": "2026-10-16",
+              "changes": [
+                "Reworded repaint and power explanations; contained long identifiers in the review guide."
+              ]
+            },
+            {
+              "date": "2026-08-28",
+              "changes": []
+            }
+          ]
         }
       ]
     },
@@ -57,9 +113,23 @@
         {
           "id": "lazybottomanchoredcolumn-a-lazy-list-for-ai-chat",
           "title": "LazyBottomAnchoredColumn: a lazy list for AI chat",
-          "date": "2026-08-26",
+          "date": "2026-10-16",
           "url": "https://specs.sebastiano.dev/lazy-bottom-anchored-column/",
-          "description": "A proposed first-layout-item provider based on Wear Compose, plus reserved scroll range, prefix-sum geometry, and height estimates grouped by content type."
+          "description": "A proposed first-layout-item provider based on Wear Compose, plus reserved scroll range, prefix-sum geometry, and height estimates grouped by content type.",
+          "version": "1.0.1",
+          "history": [
+            {
+              "version": "1.0.1",
+              "date": "2026-10-16",
+              "changes": [
+                "Reworded anchoring and cache explanations; made mobile identifiers and diagrams readable."
+              ]
+            },
+            {
+              "date": "2026-08-26",
+              "changes": []
+            }
+          ]
         }
       ]
     },
@@ -71,9 +141,23 @@
         {
           "id": "fading-in-streamed-text",
           "title": "Fading in streamed text",
-          "date": "2026-08-25",
+          "date": "2026-10-16",
           "url": "https://specs.sebastiano.dev/streamed-text-fade/",
-          "description": "A word fade that draws the full paragraph and subtracts glyph masks with decreasing opacity, without remeasuring text on each animation frame."
+          "description": "A word fade that draws the full paragraph and subtracts glyph masks with decreasing opacity, without remeasuring text on each animation frame.",
+          "version": "1.0.1",
+          "history": [
+            {
+              "version": "1.0.1",
+              "date": "2026-10-16",
+              "changes": [
+                "Reworded the masking and queue explanations; identified the browser demonstration and offscreen-buffer cost."
+              ]
+            },
+            {
+              "date": "2026-08-25",
+              "changes": []
+            }
+          ]
         }
       ]
     },
@@ -85,9 +169,23 @@
         {
           "id": "compose-stack-traces-cost-and-production-shape",
           "title": "Compose stack traces — cost and production shape",
-          "date": "2026-08-24",
+          "date": "2026-10-16",
           "url": "https://specs.sebastiano.dev/compose-stack-traces/",
-          "description": "Measured Bazel compile and Jewel runtime cost for Compose diagnostic stack traces, with IJPL vs Studio ownership."
+          "description": "Measured Bazel compile and Jewel runtime cost for Compose diagnostic stack traces, with IJPL vs Studio ownership.",
+          "version": "1.0.1",
+          "history": [
+            {
+              "version": "1.0.1",
+              "date": "2026-10-16",
+              "changes": [
+                "Added an executive summary, repaired fragmented prose and numbered lists, and contained code and matrices on narrow screens."
+              ]
+            },
+            {
+              "date": "2026-08-24",
+              "changes": []
+            }
+          ]
         }
       ]
     },
@@ -99,9 +197,23 @@
         {
           "id": "pioneer-profile-file-design",
           "title": "Profile-file design",
-          "date": "2026-08-24",
+          "date": "2026-10-16",
           "url": "https://specs.sebastiano.dev/pioneer-profile-file-design/",
-          "description": "Explicit selection of Pi extensions and MCP tools, with artifact checks, credential trust limits, and resume rules."
+          "description": "Explicit selection of Pi extensions and MCP tools, with artifact checks, credential trust limits, and resume rules.",
+          "version": "1.0.1",
+          "history": [
+            {
+              "version": "1.0.1",
+              "date": "2026-10-16",
+              "changes": [
+                "Split dense paragraphs and removed drafting commentary from the HTML; preserved the reviewed Markdown and review artifacts byte for byte."
+              ]
+            },
+            {
+              "date": "2026-08-24",
+              "changes": []
+            }
+          ]
         }
       ]
     },
@@ -113,9 +225,23 @@
         {
           "id": "zero-copy-rendering-prd-and-current-state",
           "title": "Zero-copy rendering: PRD and current state",
-          "date": "2026-08-23",
+          "date": "2026-10-16",
           "url": "https://specs.sebastiano.dev/zero-copy/",
-          "description": "Implementation status, measured performance gains and regressions, shared-texture tradeoffs, and the Linux delivery plan."
+          "description": "Implementation status, measured performance gains and regressions, shared-texture tradeoffs, and the Linux delivery plan.",
+          "version": "1.0.1",
+          "history": [
+            {
+              "version": "1.0.1",
+              "date": "2026-10-16",
+              "changes": [
+                "Replaced rhetorical performance claims with scoped descriptions and improved narrow layouts; preserved measurements and the non-multiplicative speedup warning."
+              ]
+            },
+            {
+              "date": "2026-08-23",
+              "changes": []
+            }
+          ]
         }
       ]
     },
@@ -127,9 +253,23 @@
         {
           "id": "punaro-indirect-internet-architecture",
           "title": "Indirect Internet architecture",
-          "date": "2026-08-23",
+          "date": "2026-10-16",
           "url": "https://specs.sebastiano.dev/punaro-indirect-internet-architecture/",
-          "description": "An access design using Cloudflare and optional Tailscale routing, with Punaro responsible for authorization."
+          "description": "An access design using Cloudflare and optional Tailscale routing, with Punaro responsible for authorization.",
+          "version": "1.0.1",
+          "history": [
+            {
+              "version": "1.0.1",
+              "date": "2026-10-16",
+              "changes": [
+                "Widened desktop descriptions, stacked narrow route layouts, and replaced rhetorical headings without changing security boundaries."
+              ]
+            },
+            {
+              "date": "2026-08-23",
+              "changes": []
+            }
+          ]
         }
       ]
     },
@@ -141,9 +281,23 @@
         {
           "id": "jewel-shortcuts-review",
           "title": "Actions and shortcuts review",
-          "date": "2026-07-24",
+          "date": "2026-10-16",
           "url": "https://specs.sebastiano.dev/actions/",
-          "description": "Keyboard dispatch rules for IDE and standalone Compose content, cross-platform test evidence, and the delivery plan."
+          "description": "Keyboard dispatch rules for IDE and standalone Compose content, cross-platform test evidence, and the delivery plan.",
+          "version": "1.0.1",
+          "history": [
+            {
+              "version": "1.0.1",
+              "date": "2026-10-16",
+              "changes": [
+                "Replaced overview slogans with dispatch rules and scoped evidence; fixed narrow code layouts."
+              ]
+            },
+            {
+              "date": "2026-07-24",
+              "changes": []
+            }
+          ]
         }
       ]
     }
