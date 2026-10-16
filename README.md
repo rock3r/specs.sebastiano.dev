@@ -1,6 +1,6 @@
 # specs.sebastiano.dev
 
-A small catalog and path gateway for design documents published as Cloudflare Workers.
+A catalog and path gateway for design documents hosted on Cloudflare Workers.
 
 Each deployment has one catalog entry and one public root, such as
 `https://specs.sebastiano.dev/actions/`. Supporting pages remain discoverable through the
@@ -24,14 +24,14 @@ node scripts/register-spec.mjs \
   --title "Actions and shortcuts review" \
   --date 2026-08-11 \
   --url https://specs.sebastiano.dev/actions/ \
-  --description "The living design document and proof matrix." \
+  --description "Keyboard dispatch rules and test evidence for Jewel shortcuts." \
   --version 1.2 \
   --change "Added the proof matrix for editor shortcuts." \
   --change "Fixed the macOS keymap table."
 ```
 
-A project can hold several specs. The helper updates the spec with the same URL or id,
-and adds the spec to the project otherwise.
+A project can contain several specs. The helper updates an existing spec with the same URL or id.
+If neither matches, it adds a spec to the project.
 
 `--version` and `--change` are optional but expected for every publish. The helper adds a
 revision to the spec's `history` (newest first) and sets `version` to the newest one. Publishing

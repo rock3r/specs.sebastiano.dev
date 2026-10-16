@@ -1,20 +1,16 @@
 # Product
 
-## Register
-
-brand
-
 ## Users
 
-Sebastiano first, with collaborators and curious readers as the secondary audience. They arrive looking for a specific design document or to browse the latest thinking across active projects.
+Sebastiano, collaborators, and readers use the catalog to find a design document or browse recent project updates.
 
 ## Product Purpose
 
-Specs is a small public index for design documents published as Cloudflare Worker sites. It makes scattered project notes discoverable, keeps each project together, and puts the newest work first.
+Specs lists design documents published as Cloudflare Worker sites. It groups documents by project and sorts them by update date.
 
-## Brand Personality
+## Identity
 
-Use Sebastiano's name and monogram to identify the site. Write short project descriptions in a direct, informal voice. Follow the shared document colors, type, and layout in [DESIGN.md](DESIGN.md).
+Use Sebastiano's name and monogram to identify the site. Keep descriptions short and specific to each project. Follow the shared document colors, type, and layout in [DESIGN.md](DESIGN.md).
 
 ## Anti-references
 
@@ -22,11 +18,11 @@ Do not make this look like a SaaS dashboard, a generic documentation portal, a c
 
 ## Design Principles
 
-- Keep the archive legible at a glance: project grouping and date ordering do the organizing work.
+- Group specs by project and show the newest updates first.
 - Keep Sebastiano's name and monogram in the header. Use the shared visual system in [DESIGN.md](DESIGN.md) rather than the home page's colors or type.
-- Prefer a short authored description over metadata clutter.
-- Make every entry a direct path to the source document.
-- Keep publishing mechanical so the index stays current as new Workers appear.
+- Describe each document's subject and scope.
+- Link each entry directly to its document.
+- Register published Workers with the catalog helper.
 
 ## Accessibility & Inclusion
 
