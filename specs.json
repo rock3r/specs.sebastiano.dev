@@ -3,28 +3,28 @@
     {
       "id": "cav",
       "name": "cav",
-      "description": "Motion graphics in Cavalry from a terminal, for people and coding agents.",
+      "description": "A command-line interface for creating and rendering motion graphics in Cavalry.",
       "specs": [
         {
           "id": "cav-production-workflow",
           "title": "A production workflow for cav",
           "date": "2026-10-13",
           "url": "https://specs.sebastiano.dev/cav-workflow/",
-          "description": "An optional standard flow from brief to final render, with a review before each slow or paid step, and a user's own flow file to replace it."
+          "description": "An optional workflow from brief to final render, with reviews before slow or paid steps and a user-defined file that can replace the default workflow."
         },
         {
           "id": "production-tools-for-cav",
           "title": "Production tools for cav",
           "date": "2026-10-08",
           "url": "https://specs.sebastiano.dev/cav-production-tools/",
-          "description": "Storyboards, references, music, listening, sound sources and frame-accurate review for cav, free first and better with an API key."
+          "description": "Tools for storyboards, references, music analysis, sound sources, and frame-accurate review, with free local defaults and optional API providers."
         }
       ]
     },
     {
       "id": "atc",
       "name": "Agent Traffic Control",
-      "description": "Daemonless Android emulator, iOS Simulator, and physical device leases, bounded-window warm-affinity wait queue, snapshots, and multi-agent guardrails.",
+      "description": "Device leases for Android emulators, iOS Simulators, and physical devices, with no daemon. Includes a wait queue, snapshots, and agent coordination rules.",
       "specs": [
         {
           "id": "agent-traffic-control-atc-2-0-design-spec",
@@ -38,7 +38,7 @@
     {
       "id": "frame-pacing",
       "name": "Skiko frame pacing",
-      "description": "Vsync and frame pacing for Swing and Compose apps drawn by Skiko, on any JVM.",
+      "description": "Display-synchronized repaint scheduling for Swing and Compose apps rendered by Skiko on JVMs.",
       "specs": [
         {
           "id": "skiko-vsync-and-frame-pacing",
@@ -59,21 +59,21 @@
           "title": "LazyBottomAnchoredColumn: a lazy list for AI chat",
           "date": "2026-08-26",
           "url": "https://specs.sebastiano.dev/lazy-bottom-anchored-column/",
-          "description": "Adopting the Wear Compose first-layout-item provider, and the ideas it leaves unanswered: reserved scroll range, prefix-sum geometry, and content-type height estimation."
+          "description": "A proposed first-layout-item provider based on Wear Compose, plus reserved scroll range, prefix-sum geometry, and height estimates grouped by content type."
         }
       ]
     },
     {
       "id": "compose-text-rendering",
       "name": "Compose text rendering",
-      "description": "Draw-phase techniques for text that arrives while it is being read.",
+      "description": "Draw-phase animation for streamed text in Compose.",
       "specs": [
         {
           "id": "fading-in-streamed-text",
           "title": "Fading in streamed text",
           "date": "2026-08-25",
           "url": "https://specs.sebastiano.dev/streamed-text-fade/",
-          "description": "How a streamed reply paints each new word: draw the paragraph in full, then subtract a word-shaped stencil that gets fainter every frame."
+          "description": "A word fade that draws the full paragraph and subtracts glyph masks with decreasing opacity, without remeasuring text on each animation frame."
         }
       ]
     },
@@ -94,14 +94,14 @@
     {
       "id": "pioneer",
       "name": "Pioneer",
-      "description": "A safe local bridge from coding agents to Pi for reviews and isolated evals.",
+      "description": "A local bridge from coding agents to Pi for code reviews and isolated evaluations.",
       "specs": [
         {
           "id": "pioneer-profile-file-design",
           "title": "Profile-file design",
           "date": "2026-08-24",
           "url": "https://specs.sebastiano.dev/pioneer-profile-file-design/",
-          "description": "A default-deny capability-profile design, refreshed for Pioneer 0.3.0."
+          "description": "Capability profiles that deny access by default, with the configuration format for Pioneer 0.3.0."
         }
       ]
     },
@@ -115,7 +115,7 @@
           "title": "Zero-copy rendering: PRD and current state",
           "date": "2026-08-23",
           "url": "https://specs.sebastiano.dev/zero-copy/",
-          "description": "Current implementation status, measured wins and misses, shared-texture tradeoffs, and the Linux delivery plan."
+          "description": "Implementation status, measured performance gains and regressions, shared-texture tradeoffs, and the Linux delivery plan."
         }
       ]
     },
@@ -129,7 +129,7 @@
           "title": "Indirect Internet architecture",
           "date": "2026-08-23",
           "url": "https://specs.sebastiano.dev/punaro-indirect-internet-architecture/",
-          "description": "A Cloudflare-first access design with optional Tailscale routing and Punaro-authoritative security."
+          "description": "An access design using Cloudflare and optional Tailscale routing, with Punaro responsible for authorization."
         }
       ]
     },
@@ -143,7 +143,7 @@
           "title": "Actions and shortcuts review",
           "date": "2026-07-24",
           "url": "https://specs.sebastiano.dev/actions/",
-          "description": "The living design document, proof matrix, and roadmap."
+          "description": "Keyboard dispatch rules for IDE and standalone Compose content, cross-platform test evidence, and the delivery plan."
         }
       ]
     }

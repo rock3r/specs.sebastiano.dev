@@ -2,13 +2,13 @@
 
 ## Direction
 
-The catalog and every published spec use the Actions and shortcuts review as their shared visual system. The surface is a calm technical document: light paper, dark ink, a restrained blue accent, strong serif headings, compact sans-serif prose, and wide evidence layouts. Individual specs may select the patterns their content needs, but they do not invent separate microsite identities.
+The catalog and published specs share the Actions and shortcuts review's colors, typography, and layout patterns. Use a light background, dark text, blue links, serif headings, and sans-serif body text. Specs can select the patterns their exhibits need, but must retain the shared visual system.
 
 ## Colors
 
-- `#f6f7f9` paper.
-- `#22262d` primary ink.
-- `#5a6270` secondary ink.
+- `#f6f7f9` background.
+- `#22262d` primary text.
+- `#5a6270` secondary text.
 - `#d8dce3` rules.
 - `#4a63c8` accent and links.
 - `#e7ebf8` accent bands.
