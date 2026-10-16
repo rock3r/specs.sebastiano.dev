@@ -52,16 +52,24 @@
     {
       "id": "atc",
       "name": "Agent Traffic Control",
-      "description": "Device leases for Android emulators, iOS Simulators, and physical devices, with no daemon. Includes a wait queue, snapshots, and agent coordination rules.",
+      "description": "Device leases and coordinated builds for coding agents on one machine, requested as allowlisted typed operations with no shell and no daemon. Includes a wait queue, snapshots, and crash recovery.",
       "specs": [
         {
           "id": "agent-traffic-control-atc-2-0-design-spec",
-          "title": "Agent Traffic Control (ATC): 2.0 design spec",
+          "title": "Agent Traffic Control (ATC): 3.0 design spec",
           "date": "2026-10-16",
           "url": "https://specs.sebastiano.dev/atc/",
-          "description": "Exclusive TTL-bounded Android and iOS device leases, KMP dual-lease sessions, QEMU and APFS snapshots, crash recovery, and cooperative guardrails for Codex, Pi, Cursor, Antigravity, Gemini CLI, and Claude Code.",
-          "version": "1.0.1",
+          "description": "Allowlisted typed operations for builds and Android and iOS devices: exit-7 validation, --force accountability, transport-safe device commands, batch DAGs with claim reuse, and build/device co-scheduling on top of TTL leases, the warm-affinity queue, snapshots, and crash recovery.",
+          "version": "2.0",
           "history": [
+            {
+              "version": "2.0",
+              "date": "2026-10-16",
+              "changes": [
+                "Rewrote the spec for ATC 3.0: typed-op catalog, exit-7 validation, --force accountability, device transport and Windows contracts, batch DAG with claim reuse, build/device co-scheduling, and notices.",
+                "Hooks now only record session identity; removed atc guard and shell rewriting."
+              ]
+            },
             {
               "version": "1.0.1",
               "date": "2026-10-16",
