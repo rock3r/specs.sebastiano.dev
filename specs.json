@@ -11,8 +11,16 @@
           "date": "2026-11-23",
           "url": "https://specs.sebastiano.dev/actions/",
           "description": "Keyboard dispatch rules for IDE and standalone Compose content, cross-platform test evidence, and the delivery plan.",
-          "version": "2.0",
+          "version": "2.0.1",
           "history": [
+            {
+              "version": "2.0.1",
+              "date": "2026-11-23",
+              "changes": [
+                "Opened PR #3781 ([JEWEL-1365]) on JetBrains/intellij-community with uploaded Spectre stills and a review guide comment; linked all spec pages to the PR.",
+                "Verified headful macOS OS-robot IDE bridge E2E (//platform/jewel/ide-laf-bridge:jewel-bridge-e2e-tests, 1/1 passing in 40.6s across PopupScenarios, ScrollbarScenarios, and ShortcutScenarios)."
+              ]
+            },
             {
               "version": "2.0",
               "date": "2026-11-23",
