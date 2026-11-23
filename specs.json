@@ -1,6 +1,42 @@
 {
   "projects": [
     {
+      "id": "jewel-shortcuts",
+      "name": "Jewel shortcuts",
+      "description": "Compose shortcuts and IntelliJ keymap work in the IntelliJ Platform.",
+      "specs": [
+        {
+          "id": "jewel-shortcuts-review",
+          "title": "Actions and shortcuts review",
+          "date": "2026-11-23",
+          "url": "https://specs.sebastiano.dev/actions/",
+          "description": "Keyboard dispatch rules for IDE and standalone Compose content, cross-platform test evidence, and the delivery plan.",
+          "version": "2.0",
+          "history": [
+            {
+              "version": "2.0",
+              "date": "2026-11-23",
+              "changes": [
+                "Updated dispatch model, walkthrough excerpts, and verification record for Jewel 0.44.0 (PR 2 ced94a18b7e31a ready for review as [JEWEL-1365]; PR 1 KeyboardAwareContainer and Icons #3585/#3588 landed on master).",
+                "Reordered dispatch flow to MenuShortcutScope -> focused claim -> host keymap -> ordinary input, added synthetic Spectre standalone captures, and verified all 23 GitHub source links."
+              ]
+            },
+            {
+              "version": "1.0.1",
+              "date": "2026-10-16",
+              "changes": [
+                "Replaced overview slogans with dispatch rules and scoped evidence; fixed narrow code layouts."
+              ]
+            },
+            {
+              "date": "2026-07-24",
+              "changes": []
+            }
+          ]
+        }
+      ]
+    },
+    {
       "id": "cav",
       "name": "cav",
       "description": "A command-line interface for creating and rendering motion graphics in Cavalry.",
@@ -275,34 +311,6 @@
             },
             {
               "date": "2026-08-23",
-              "changes": []
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "jewel-shortcuts",
-      "name": "Jewel shortcuts",
-      "description": "Compose shortcuts and IntelliJ keymap work in the IntelliJ Platform.",
-      "specs": [
-        {
-          "id": "jewel-shortcuts-review",
-          "title": "Actions and shortcuts review",
-          "date": "2026-10-16",
-          "url": "https://specs.sebastiano.dev/actions/",
-          "description": "Keyboard dispatch rules for IDE and standalone Compose content, cross-platform test evidence, and the delivery plan.",
-          "version": "1.0.1",
-          "history": [
-            {
-              "version": "1.0.1",
-              "date": "2026-10-16",
-              "changes": [
-                "Replaced overview slogans with dispatch rules and scoped evidence; fixed narrow code layouts."
-              ]
-            },
-            {
-              "date": "2026-07-24",
               "changes": []
             }
           ]
