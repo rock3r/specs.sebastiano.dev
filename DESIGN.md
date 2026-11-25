@@ -2,18 +2,18 @@
 
 ## Direction
 
-The catalog and published specs share the Actions and shortcuts review's colors, typography, and layout patterns. Use a light background, dark text, blue links, serif headings, and sans-serif body text. Specs can select the patterns their exhibits need, but must retain the shared visual system.
+The catalog and shared document header use the yellow sebastiano.dev identity. The catalog uses Jaapokki for display. Documents retain serif headings and sans-serif body text. Exhibit styles can stay specific to each document.
 
 ## Colors
 
-- `#f6f7f9` background.
-- `#22262d` primary text.
-- `#5a6270` secondary text.
-- `#d8dce3` rules.
-- `#4a63c8` accent and links.
-- `#e7ebf8` accent bands.
+- `#fff9d7` background.
+- `#26210d` primary text.
+- `#65571e` secondary text.
+- `#cfc28a` rules.
+- `#a63719` accent and links.
+- `#fff2a1` accent bands.
 - Semantic green, amber, and violet pairs are reserved for compact status states.
-- Matching dark tokens follow `prefers-color-scheme: dark`.
+- Warm charcoal dark tokens follow `prefers-color-scheme: dark`.
 
 ## Typography
 
@@ -27,4 +27,4 @@ The shared content width is 1120px with 48px desktop and 32px mobile gutters. Pr
 
 ## Interaction
 
-Links and focus rings use the blue accent. There is no hover-only information. Wide evidence stays contained instead of causing page-level overflow. Motion is optional, meaningful, and removed for reduced-motion users.
+Links and focus rings use the brick accent in light mode and warm orange in dark mode. There is no hover-only information. Wide evidence stays contained instead of causing page-level overflow. Motion is optional, meaningful, and removed for reduced-motion users.

@@ -19,7 +19,7 @@ Do not make this look like a SaaS dashboard, a generic documentation portal, a c
 ## Design Principles
 
 - Group specs by project and show the newest updates first.
-- Keep Sebastiano's name and monogram in the header. Use the shared visual system in [DESIGN.md](DESIGN.md) rather than the home page's colors or type.
+- Keep Sebastiano's name and monogram in the header. Use the catalog and document styles in [DESIGN.md](DESIGN.md) with the main site's brand palette.
 - Describe each document's subject and scope.
 - Link each entry directly to its document.
 - Register published Workers with the catalog helper.
