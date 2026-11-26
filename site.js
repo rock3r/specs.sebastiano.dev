@@ -1,5 +1,12 @@
 const catalog = document.querySelector("#catalog");
 const catalogMeta = document.querySelector("#catalog-meta");
+const retryButton = document.querySelector("#catalog-retry");
+const catalogViews = {
+  loading: document.querySelector("#catalog-loading"),
+  projects: document.querySelector("#catalog-projects"),
+  empty: document.querySelector("#catalog-empty"),
+  error: document.querySelector("#catalog-error"),
+};
 
 const formatDate = (value) => {
   const date = new Date(`${value}T12:00:00`);
@@ -71,21 +78,39 @@ const renderProject = (project) => {
   return section;
 };
 
-fetch("specs.json", { cache: "no-store" })
-  .then((response) => {
-    if (!response.ok) throw new Error(`Catalog request failed: ${response.status}`);
-    return response.json();
-  })
-  .then((data) => {
-    const projects = [...data.projects].sort((a, b) => latestDate(b) - latestDate(a));
+function showCatalog(state, status) {
+  catalog.setAttribute("aria-busy", String(state === "loading"));
+  for (const [name, view] of Object.entries(catalogViews)) {
+    view.hidden = name !== state;
+  }
+  catalogMeta.textContent = status;
+}
+
+async function loadCatalog({ retry = false } = {}) {
+  if (retry) catalogMeta.focus();
+  showCatalog("loading", "Loading the index…");
+
+  try {
+    const response = await fetch("specs.json", { cache: "no-store" });
+    if (!response.ok) throw new Error("Catalog unavailable");
+    const data = await response.json();
+    const projects = data.projects
+      .filter((project) => project.specs.length > 0)
+      .sort((a, b) => latestDate(b) - latestDate(a));
     const total = projects.reduce((sum, project) => sum + project.specs.length, 0);
-    catalogMeta.textContent = `${total} ${total === 1 ? "spec" : "specs"} across ${projects.length} ${projects.length === 1 ? "project" : "projects"} · newest first`;
-    catalog.replaceChildren(...projects.map(renderProject));
-  })
-  .catch((error) => {
-    catalogMeta.textContent = "The index is temporarily unavailable.";
-    const message = document.createElement("p");
-    message.className = "error";
-    message.textContent = error.message;
-    catalog.replaceChildren(message);
-  });
+
+    if (total === 0) {
+      showCatalog("empty", "0 specs");
+      return;
+    }
+
+    catalogViews.projects.replaceChildren(...projects.map(renderProject));
+    showCatalog("projects", `${total} ${total === 1 ? "spec" : "specs"} across ${projects.length} ${projects.length === 1 ? "project" : "projects"} · newest first`);
+  } catch {
+    showCatalog("error", "Couldn’t load the specs catalog.");
+    if (retry) retryButton.focus();
+  }
+}
+
+retryButton.addEventListener("click", () => loadCatalog({ retry: true }));
+loadCatalog();

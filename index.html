@@ -9,6 +9,7 @@
   <meta name="description" content="Sebastiano's public index of project specs and design documents.">
   <title>Specs · Sebastiano Poggi</title>
   <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="assets/jaapokki.css">
   <link rel="stylesheet" href="styles.css">
   <link rel="alternate" type="application/atom+xml" title="Spec updates" href="https://sebastiano.dev/feed.xml?tag=spec">
 </head>
@@ -29,14 +30,20 @@
       <header class="intro page-shell">
         <h1>Specs and design notes<span aria-hidden="true">.</span></h1>
         <p class="intro-copy">Browse design decisions, test evidence, and implementation plans by project. <a href="https://sebastiano.dev/updates/?tag=spec">Follow spec updates</a>.</p>
-        <p class="catalog-meta" id="catalog-meta" role="status">Loading the index…</p>
+        <p class="catalog-meta" id="catalog-meta" role="status" tabindex="-1">Loading the index…</p>
       </header>
     </div>
 
-    <div class="page-shell" id="catalog" aria-live="polite">
-      <p class="loading">Loading specs…</p>
+    <div class="page-shell" id="catalog" aria-busy="true">
+      <p class="loading" id="catalog-loading">Loading specs…</p>
+      <div id="catalog-projects" hidden></div>
+      <p class="notice" id="catalog-empty" hidden>No specs have been published yet.</p>
+      <div class="notice" id="catalog-error" hidden>
+        <button type="button" id="catalog-retry">Try again</button>
+      </div>
     </div>
     <noscript>
+      <style>#catalog, #catalog-meta { display: none; }</style>
       <p class="notice page-shell">Enable JavaScript to load the catalog from <a href="specs.json">specs.json</a>.</p>
     </noscript>
   </main>
